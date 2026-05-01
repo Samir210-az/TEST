@@ -2,12 +2,20 @@
 <html lang="az">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-
+
+scalable=yes">
     <title>İnkişaf Rotası | Peşəkar Dəyərləndirmə</title>
     <!-- Font Awesome İkonlar -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0
+
+-beta3/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?
+
+family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" 
+
+rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -36,7 +44,9 @@
             right: -20%;
             width: 80%;
             height: 80%;
-            background: radial-gradient(circle, rgba(255,215,180,0.2) 0%, rgba(255,215,180,0) 70%);
+            background: radial-gradient(circle, rgba(255,215,180,0.2) 0%, rgba
+
+(255,215,180,0) 70%);
             border-radius: 50%;
             z-index: -1;
             pointer-events: none;
@@ -49,7 +59,9 @@
             border-radius: 48px;
             padding: 28px 32px;
             margin-bottom: 28px;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 
+
+255, 0.6);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
@@ -311,7 +323,9 @@
             h1 { font-size: 1.8rem; }
         }
         @media print {
-            .no-print, .action-bar, .rating-buttons, .collapse-icon, button, footer, .social-link {
+            .no-print, .action-bar, .rating-buttons, .collapse-icon, button, footer, 
+
+.social-link {
                 display: none;
             }
             .result-panel {
@@ -326,55 +340,145 @@
 <div class="container">
     <div class="card no-print">
         <div class="hero">
-            <h1><i class="fas fa-chalkboard-user"></i> İNKİŞAF ROTASI <span class="badge-new">Peşəkar şablon</span></h1>
+            <h1><i class="fas fa-chalkboard-user"></i> ERKƏN İNKİŞAF, DƏYƏRLƏNDİRMƏ <span 
+
+class="badge-new">Peşəkar şablon</span></h1>
         </div>
         <div class="subhead">
-            <i class="fas fa-hand-holding-heart"></i> Xüsusi qayğıya ehtiyacı olan uşaqlar üçün strukturlaşdırılmış dəyərləndirmə
+            <i class="fas fa-hand-holding-heart"></i> Xüsusi qayğıya ehtiyacı olan uşaqlar 
+
+üçün strukturlaşdırılmış dəyərləndirmə
         </div>
         <div class="form-row">
-            <div class="form-group"><label><i class="fas fa-user"></i> Uşaq kodu</label><input type="text" id="childCode" placeholder="Məs: AZ-R-001"></div>
-            <div class="form-group"><label><i class="fas fa-calendar-alt"></i> Yaş (il/ay)</label><input type="text" id="childAge" placeholder="4 il 2 ay"></div>
-            <div class="form-group"><label><i class="fas fa-venus-mars"></i> Cins</label><select id="childGender"><option>Qız</option><option>Oğlan</option></select></div>
-            <div class="form-group"><label><i class="fas fa-user-md"></i> Mütəxəssis</label><input type="text" id="expert" placeholder="Ad, vəzifə"></div>
-            <div class="form-group"><label><i class="fas fa-calendar-week"></i> Tarix</label><input type="date" id="evalDate"></div>
+            <div class="form-group"><label><i class="fas fa-user"></i> Uşaq 
+
+kodu</label><input type="text" id="childCode" placeholder="Məs: AZ-R-001"></div>
+            <div class="form-group"><label><i class="fas fa-calendar-alt"></i> Yaş (il/ay)
+
+</label><input type="text" id="childAge" placeholder="4 il 2 ay"></div>
+            <div class="form-group"><label><i class="fas fa-venus-mars"></i> 
+
+Cins</label><select 
+
+id="childGender"><option>Qız</option><option>Oğlan</option></select></div>
+            <div class="form-group"><label><i class="fas fa-user-md"></i> 
+
+Mütəxəssis</label><input type="text" id="expert" placeholder="Ad, vəzifə"></div>
+            <div class="form-group"><label><i class="fas fa-calendar-week"></i> 
+
+Tarix</label><input type="date" id="evalDate"></div>
         </div>
-        <div class="form-group"><label><i class="fas fa-notes-medical"></i> Qısa anamnez / Valideyn şikayəti</label><textarea rows="2" id="history" placeholder="Doğum, erkən inkişaf, əvvəlki dəstəklər, əsas narahatlıqlar..."></textarea></div>
+        <div class="form-group"><label><i class="fas fa-notes-medical"></i> Qısa anamnez / 
+
+Valideyn şikayəti</label><textarea rows="2" id="history" placeholder="Doğum, erkən inkişaf, 
+
+əvvəlki dəstəklər, əsas narahatlıqlar..."></textarea></div>
     </div>
 
     <div id="domainsContainer"></div>
 
     <div class="action-bar no-print">
-        <button id="resetBtn" class="secondary"><i class="fas fa-undo-alt"></i> Sıfırla</button>
-        <button id="reportBtn" class="primary"><i class="fas fa-file-alt"></i> İnkişaf profili + Tövsiyələr</button>
-        <button id="printBtn" class="secondary"><i class="fas fa-print"></i> Hesabatı çap et</button>
+        <button id="resetBtn" class="secondary"><i class="fas fa-undo-alt"></i> 
+
+Sıfırla</button>
+        <button id="reportBtn" class="primary"><i class="fas fa-file-alt"></i> İnkişaf 
+
+profili + Tövsiyələr</button>
+        <button id="printBtn" class="secondary"><i class="fas fa-print"></i> Hesabatı çap 
+
+et</button>
     </div>
 
     <div id="resultPanel" class="result-panel"></div>
 
     <footer class="no-print">
-        <a href="https://www.instagram.com/s_akhundoff" target="_blank" class="social-link">
+        <a href="https://www.instagram.com/s_akhundoff" target="_blank" class="social-
+
+link">
             <i class="fab fa-instagram"></i> by s_akhundoff
         </a>
-        <p style="margin-top: 16px;">Bu alət standartlaşdırılmış test deyil, reabilitasiya mərkəzlərinə istiqamətləndirmə məqsədi daşıyır.</p>
+        <p style="margin-top: 16px;">Bütün hüquqları qorunur. 2026</p>
     </footer>
 </div>
 
 <script>
     // ========= 10 KLİNİK DOMAIN – tam eyni suallar, heç nə dəyişilməyib =========
     const domains = [
-        { name: "🏃 Qabaq motor (ümumi hərəkət)", items: ["Baş nəzarəti oturaq vəziyyətdə", "Dayanma tarazlığı (ən az 10 saniyə)", "Pilləkənləri növbəli ayaqla çıxma", "Topu tutma və atma (2 m məsafə)", "Bir ayaq üstə dayanma (3-5 saniyə)", "Sıçrayış və tullanma (hər iki ayaqla)"] },
-        { name: "✍️ İncə motor (əl bacarığı)", items: ["Qələmi tripod tutuşla saxlama", "Xətt çəkmə (şaquli/üfüqi) nüsxəsi", "Muncuqları ipə düzmə (≥4 ədəd)", "Düymələri açıb bağlama", "Makasla sadə formaları kəsmə", "Kiçik leqo və ya bərkidiciləri birləşdirmə"] },
-        { name: "🗣 Reseptiv dil (anlama)", items: ["Sadə 1 addımlı əmrləri başa düşmə", "2 addımlı əmrləri yerinə yetirmə", "Əşyaları adına görə göstərmə (10+ şəkil)", "Sual sözlərini anlama (nə, harada, kim)", "Hekayəni dinləyərək suala cavab vermə", "Mürəkkəb təlimatlarla tapşırığı yerinə yetirmə"] },
-        { name: "💬 Ekspressiv dil (danışıq)", items: ["Səs çıxarma və fonasiya (yaşa uyğun)", "Ən az 20 aktiv söz işlətmə", "2-3 sözlü ifadələr qurma", "Gündəlik ehtiyaclarını sözlə ifadə (ac, susuz)", "Sadə hekayə danışma (3 cümlə)", "Suallara tam cümlə ilə cavab vermə"] },
-        { name: "🤝 Sosial-emosional", items: ["Gözkontakt qurma (tanış və yad mühitdə)", "Yaşıdı ilə növbəli oyun", "Duyğularını adlandırma (xoşbəxt, qəmli, qorxu)", "Başqasının duyğusunu tanıma (şəkil üzərində)", "Emosional tənzimləmə (qəzəb, məyusluq)", "Könüllü kömək və paylaşma"] },
-        { name: "🧼 Öz qulluq (gündəlik həyat)", items: ["Əl-üz yuma (sabun+qurutma)", "Diş fırçalama (köməksiz)", "Paltarı çıxarıb geyinmə (kömək lazımdırsa qismən)", "Ayaqqabı bağlama (velcro və ya sadə kaytan)", "Tualet ehtiyacının tək idarəsi", "Süfrə qurğularını (qaşıq, çəngəl, fincan) müstəqil istifadə"] },
-        { name: "🧠 Koqnitiv / idrak bacarıqları", items: ["Əsas rəngləri ayırd etmə (qırmızı, göy, sarı, yaşıl)", "Formaları tanıma (dairə, kvadrat, üçbucaq)", "Böyük-kiçik, uzun-qısa müqayisəsi", "5-7 dəqiqə diqqət cəmləmə (oyun və ya tapşırıqda)", "3 əşyanı 60 saniyə sonra xatırlama", "Sadə səbəb-nəticə əlaqəsi (düymə basanda işıq yanır)"] },
-        { name: "🎭 Oyun və təxəyyül", items: ["Funksional oyun (fincanla içmə təqlidi)", "Simvolik oyun (kubik = telefon)", "Sadə qaydalı oyuna qatılma (saklambac, loto)", "Təxəyyüllü hekayə qurma (kuklalarla səhnə)", "Müstəqil oyun (10 dəqiqə dayanmadan)", "Yetkin rəhbərliyi olmadan qrup oyunu"] },
-        { name: "🔊 Sensor prosessual (həssaslıq)", items: ["Müxtəlif teksturalı qidalara qarşı normal reaksiya", "Yüksək səslərdən həddindən artıq qorxmama", "Toxunma və qucaqlaşma qəbulu (yad adamdan çəkinmə normal)", "Sallanma/fırlanma hərəkətlərini tolerant qarşılama", "Qalabalıq mühitdə narahat olmama", "Əl-ayaq koordinasiyasında balans problemləri minimal"] },
-        { name: "🎯 Diqqət və davranış tənzimlənməsi", items: ["İstək təxirə salma (2 dəqiqə gözləyə bilmə)", "Fəaliyyət dəyişikliyinə asan adaptasiya", "Təlimatı eşidib dərhal başlama", "Oturaq işdə bədən nəzarəti (stulda oturma)", "Təkrarlanan hərəkətlərin (stereotiplərin) olmaması", "Hiperaktivlik/impulsivlik səviyyəsi – yaşa uyğun"] }
+        { name: "🏃 Qabaq motor (ümumi hərəkət)", items: ["Baş nəzarəti oturaq vəziyyətdə", 
+
+"Dayanma tarazlığı (ən az 10 saniyə)", "Pilləkənləri növbəli ayaqla çıxma", "Topu tutma və 
+
+atma (2 m məsafə)", "Bir ayaq üstə dayanma (3-5 saniyə)", "Sıçrayış və tullanma (hər iki 
+
+ayaqla)"] },
+        { name: "✍️ İncə motor (əl bacarığı)", items: ["Qələmi tripod tutuşla saxlama", "Xətt 
+
+çəkmə (şaquli/üfüqi) nüsxəsi", "Muncuqları ipə düzmə (≥4 ədəd)", "Düymələri açıb bağlama", 
+
+"Makasla sadə formaları kəsmə", "Kiçik leqo və ya bərkidiciləri birləşdirmə"] },
+        { name: "🗣 Reseptiv dil (anlama)", items: ["Sadə 1 addımlı əmrləri başa düşmə", "2 
+
+addımlı əmrləri yerinə yetirmə", "Əşyaları adına görə göstərmə (10+ şəkil)", "Sual sözlərini 
+
+anlama (nə, harada, kim)", "Hekayəni dinləyərək suala cavab vermə", "Mürəkkəb təlimatlarla 
+
+tapşırığı yerinə yetirmə"] },
+        { name: "💬 Ekspressiv dil (danışıq)", items: ["Səs çıxarma və fonasiya (yaşa 
+
+uyğun)", "Ən az 20 aktiv söz işlətmə", "2-3 sözlü ifadələr qurma", "Gündəlik ehtiyaclarını 
+
+sözlə ifadə (ac, susuz)", "Sadə hekayə danışma (3 cümlə)", "Suallara tam cümlə ilə cavab 
+
+vermə"] },
+        { name: "🤝 Sosial-emosional", items: ["Gözkontakt qurma (tanış və yad mühitdə)", 
+
+"Yaşıdı ilə növbəli oyun", "Duyğularını adlandırma (xoşbəxt, qəmli, qorxu)", "Başqasının 
+
+duyğusunu tanıma (şəkil üzərində)", "Emosional tənzimləmə (qəzəb, məyusluq)", "Könüllü kömək və 
+
+paylaşma"] },
+        { name: "🧼 Öz qulluq (gündəlik həyat)", items: ["Əl-üz yuma (sabun+qurutma)", "Diş 
+
+fırçalama (köməksiz)", "Paltarı çıxarıb geyinmə (kömək lazımdırsa qismən)", "Ayaqqabı 
+
+bağlama (velcro və ya sadə kaytan)", "Tualet ehtiyacının tək idarəsi", "Süfrə qurğularını 
+
+(qaşıq, çəngəl, fincan) müstəqil istifadə"] },
+        { name: "🧠 Koqnitiv / idrak bacarıqları", items: ["Əsas rəngləri ayırd etmə 
+
+(qırmızı, göy, sarı, yaşıl)", "Formaları tanıma (dairə, kvadrat, üçbucaq)", "Böyük-kiçik, 
+
+uzun-qısa müqayisəsi", "5-7 dəqiqə diqqət cəmləmə (oyun və ya tapşırıqda)", "3 əşyanı 60 
+
+saniyə sonra xatırlama", "Sadə səbəb-nəticə əlaqəsi (düymə basanda işıq yanır)"] },
+        { name: "🎭 Oyun və təxəyyül", items: ["Funksional oyun (fincanla içmə təqlidi)", 
+
+"Simvolik oyun (kubik = telefon)", "Sadə qaydalı oyuna qatılma (saklambac, loto)", 
+
+"Təxəyyüllü hekayə qurma (kuklalarla səhnə)", "Müstəqil oyun (10 dəqiqə dayanmadan)", "Yetkin 
+
+rəhbərliyi olmadan qrup oyunu"] },
+        { name: "🔊 Sensor prosessual (həssaslıq)", items: ["Müxtəlif teksturalı qidalara 
+
+qarşı normal reaksiya", "Yüksək səslərdən həddindən artıq qorxmama", "Toxunma və qucaqlaşma 
+
+qəbulu (yad adamdan çəkinmə normal)", "Sallanma/fırlanma hərəkətlərini tolerant qarşılama", 
+
+"Qalabalıq mühitdə narahat olmama", "Əl-ayaq koordinasiyasında balans problemləri minimal"] 
+
+},
+        { name: "🎯 Diqqət və davranış tənzimlənməsi", items: ["İstək təxirə salma (2 dəqiqə 
+
+gözləyə bilmə)", "Fəaliyyət dəyişikliyinə asan adaptasiya", "Təlimatı eşidib dərhal başlama", 
+
+"Oturaq işdə bədən nəzarəti (stulda oturma)", "Təkrarlanan hərəkətlərin (stereotiplərin) 
+
+olmaması", "Hiperaktivlik/impulsivlik səviyyəsi – yaşa uyğun"] }
     ];
 
-    let answers = Array(domains.length).fill().map(() => Array(domains[0].items.length).fill(null));
+    let answers = Array(domains.length).fill().map(() => Array(domains
+
+[0].items.length).fill(null));
     let optButtons = [];
 
     function renderDomains() {
@@ -386,7 +490,11 @@
             section.className = 'domain-area';
             const header = document.createElement('div');
             header.className = 'domain-header';
-            header.innerHTML = `<div class="domain-title"><i class="fas fa-brain"></i> ${domain.name}</div><div class="collapse-icon no-print"><i class="fas fa-chevron-down"></i></div>`;
+            header.innerHTML = `<div class="domain-title"><i class="fas fa-brain"></i> 
+
+${domain.name}</div><div class="collapse-icon no-print"><i class="fas fa-chevron-
+
+down"></i></div>`;
             const body = document.createElement('div');
             body.className = 'domain-body';
             section.appendChild(header);
@@ -396,7 +504,11 @@
             domain.items.forEach((item, iIdx) => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'subskill-item';
-                itemDiv.innerHTML = `<div class="subskill-text"><i class="fas fa-caret-right"></i> ${iIdx+1}. ${item}</div><div class="rating-buttons" data-d="${dIdx}" data-i="${iIdx}"></div>`;
+                itemDiv.innerHTML = `<div class="subskill-text"><i class="fas fa-caret-
+
+right"></i> ${iIdx+1}. ${item}</div><div class="rating-buttons" data-d="${dIdx}" data-
+
+i="${iIdx}"></div>`;
                 body.appendChild(itemDiv);
                 const btnContainer = itemDiv.querySelector('.rating-buttons');
                 const btns = [];
@@ -435,7 +547,9 @@
             header.addEventListener('click', () => {
                 collapsed = !collapsed;
                 body.style.display = collapsed ? 'none' : 'block';
-                header.querySelector('.collapse-icon').innerHTML = collapsed ? '<i class="fas fa-chevron-right"></i>' : '<i class="fas fa-chevron-down"></i>';
+                header.querySelector('.collapse-icon').innerHTML = collapsed ? '<i 
+
+class="fas fa-chevron-right"></i>' : '<i class="fas fa-chevron-down"></i>';
             });
         });
     }
@@ -453,7 +567,9 @@
         btns.forEach(btn => {
             const btnVal = btn.dataset.val;
             if(btnVal !== undefined) {
-                if(current !== null && parseInt(btnVal) === current) btn.classList.add('selected');
+                if(current !== null && parseInt(btnVal) === current) btn.classList.add
+
+('selected');
                 else btn.classList.remove('selected');
             } else {
                 if(current === null) btn.classList.add('selected');
@@ -496,7 +612,9 @@
 
     function resetAll() {
         if(!confirm('Bütün cavablar silinsin? Bu əməliyyat geri alınmaz.')) return;
-        answers = Array(domains.length).fill().map(() => Array(domains[0].items.length).fill(null));
+        answers = Array(domains.length).fill().map(() => Array(domains
+
+[0].items.length).fill(null));
         for(let d=0; d<domains.length; d++)
             for(let i=0; i<domains[d].items.length; i++)
                 updateButtonStyles(d,i);
@@ -512,13 +630,51 @@
 
     function getParentAdvice(overallPercent) {
         if(overallPercent < 35) {
-            return `<div style="background:#ffe6e6; padding:20px; border-radius:28px;"><h4><i class="fas fa-exclamation-triangle"></i> Yüksək dəstək ehtiyacı – təcili reabilitasiya</h4><ul><li>Dərhal reabilitasiya mərkəzinə müraciət edin</li><li>Gündəlik strukturlaşdırılmış oyun vaxtı (20-30 dəq)</li><li>Vizual dəstəklər (cədvəl, şəkillər) hazırlayın</li><li>Hər kiçik uğuru tərifləyin</li><li>Özünüzə də psixoloji dəstək alın</li></ul></div>`;
+            return `<div style="background:#ffe6e6; padding:20px; border-
+
+radius:28px;"><h4><i class="fas fa-exclamation-triangle"></i> Yüksək dəstək ehtiyacı – 
+
+təcili reabilitasiya</h4><ul><li>Dərhal reabilitasiya mərkəzinə müraciət 
+
+edin</li><li>Gündəlik strukturlaşdırılmış oyun vaxtı (20-30 dəq)</li><li>Vizual dəstəklər 
+
+(cədvəl, şəkillər) hazırlayın</li><li>Hər kiçik uğuru tərifləyin</li><li>Özünüzə də psixoloji 
+
+dəstək alın</li></ul></div>`;
         } else if(overallPercent < 55) {
-            return `<div style="background:#fff0e0; padding:20px; border-radius:28px;"><h4><i class="fas fa-chart-line"></i> Orta dərəcəli dəstək – hədəflənmiş terapiya</h4><ul><li>Reabilitasiya mərkəzində həftədə 1-2 seans</li><li>Evdə gündəlik 15 dəqiqəlik inkişaf saatı</li><li>Müsbət davranış dəstəyi və etika sistemi qurun</li><li>Yaşıd qruplarına cəlb edin</li><li>Gündəlik iş rejimini sabitləşdirin</li></ul></div>`;
+            return `<div style="background:#fff0e0; padding:20px; border-
+
+radius:28px;"><h4><i class="fas fa-chart-line"></i> Orta dərəcəli dəstək – hədəflənmiş 
+
+terapiya</h4><ul><li>Reabilitasiya mərkəzində həftədə 1-2 seans</li><li>Evdə gündəlik 15 
+
+dəqiqəlik inkişaf saatı</li><li>Müsbət davranış dəstəyi və etika sistemi qurun</li><li>Yaşıd 
+
+qruplarına cəlb edin</li><li>Gündəlik iş rejimini sabitləşdirin</li></ul></div>`;
         } else if(overallPercent < 75) {
-            return `<div style="background:#fef7e0; padding:20px; border-radius:28px;"><h4><i class="fas fa-leaf"></i> Yüngül çətinlik – monitorinq və gücləndirmə</h4><ul><li>Hər gün birlikdə kitab oxuyun, şəkillər haqqında danışın</li><li>Onun maraqlarına əsaslanan oyunlar seçin</li><li>Rol oyunları ilə sosial bacarıqları artırın</li><li>İncə motor üçün mozaika, boncuk işləri</li><li>6 ay sonra təkrar dəyərləndirmə</li></ul></div>`;
+            return `<div style="background:#fef7e0; padding:20px; border-
+
+radius:28px;"><h4><i class="fas fa-leaf"></i> Yüngül çətinlik – monitorinq və 
+
+gücləndirmə</h4><ul><li>Hər gün birlikdə kitab oxuyun, şəkillər haqqında danışın</li><li>Onun 
+
+maraqlarına əsaslanan oyunlar seçin</li><li>Rol oyunları ilə sosial bacarıqları 
+
+artırın</li><li>İncə motor üçün mozaika, boncuk işləri</li><li>6 ay sonra təkrar 
+
+dəyərləndirmə</li></ul></div>`;
         } else {
-            return `<div style="background:#e0f5ee; padding:20px; border-radius:28px;"><h4><i class="fas fa-star"></i> Yaş norması – dəstəkləyici mühit</h4><ul><li>Müxtəlif fəaliyyətlər (rəsm, musiqi, idman)</li><li>Açıq uclu suallar verin, cavablarını dinləyin</li><li>Yaşıdları ilə vaxt keçirməsini təşviq edin</li><li>Hər axşam hekayə oxumağı vərdiş halına gətirin</li><li>İldə bir dəfə profilaktik dəyərləndirmə</li></ul></div>`;
+            return `<div style="background:#e0f5ee; padding:20px; border-
+
+radius:28px;"><h4><i class="fas fa-star"></i> Yaş norması – dəstəkləyici 
+
+mühit</h4><ul><li>Müxtəlif fəaliyyətlər (rəsm, musiqi, idman)</li><li>Açıq uclu suallar 
+
+verin, cavablarını dinləyin</li><li>Yaşıdları ilə vaxt keçirməsini təşviq edin</li><li>Hər 
+
+axşam hekayə oxumağı vərdiş halına gətirin</li><li>İldə bir dəfə profilaktik 
+
+dəyərləndirmə</li></ul></div>`;
         }
     }
 
@@ -526,8 +682,12 @@
         const child = document.getElementById('childCode').value || 'Uşaq';
         const age = document.getElementById('childAge').value || '?';
         const expert = document.getElementById('expert').value || 'Mütəxəssis';
-        const date = document.getElementById('evalDate').value || new Date().toLocaleDateString();
-        const anamnez = document.getElementById('history').value || 'Məlumat daxil edilməyib.';
+        const date = document.getElementById('evalDate').value || new Date
+
+().toLocaleDateString();
+        const anamnez = document.getElementById('history').value || 'Məlumat daxil 
+
+edilməyib.';
 
         let domainStats = [];
         for(let d=0; d<domains.length; d++) {
@@ -548,34 +708,64 @@
             domainStats.push({ name: domains[d].name, percent, riskLevel });
         }
 
-        const totalPercentArr = domainStats.filter(s => s.percent !== null).map(s => s.percent);
-        const overall = totalPercentArr.length ? totalPercentArr.reduce((a,b)=>a+b,0)/totalPercentArr.length : 0;
+        const totalPercentArr = domainStats.filter(s => s.percent !== null).map(s => 
+
+s.percent);
+        const overall = totalPercentArr.length ? totalPercentArr.reduce((a,b)=>a
+
++b,0)/totalPercentArr.length : 0;
         const parentAdvice = getParentAdvice(overall);
 
-        const highRiskDomains = domainStats.filter(s => s.percent !== null && s.percent < 40).map(s => s.name);
+        const highRiskDomains = domainStats.filter(s => s.percent !== null && s.percent < 
+
+40).map(s => s.name);
         let detailedAdvice = '';
-        if(highRiskDomains.length) detailedAdvice = `<p><strong><i class="fas fa-bell"></i> Ən çox dəstək tələb edən sahələr:</strong> ${highRiskDomains.join(', ')}. Reabilitasiya mərkəzində məqsədli terapiya başlanmalıdır.</p>`;
-        else detailedAdvice = '<p>Bütün sahələr monitorinq səviyyəsindədir. Ev proqramı kifayətdir.</p>';
+        if(highRiskDomains.length) detailedAdvice = `<p><strong><i class="fas fa-bell"></i> 
+
+Ən çox dəstək tələb edən sahələr:</strong> ${highRiskDomains.join(', ')}. Reabilitasiya 
+
+mərkəzində məqsədli terapiya başlanmalıdır.</p>`;
+        else detailedAdvice = '<p>Bütün sahələr monitorinq səviyyəsindədir. Ev proqramı 
+
+kifayətdir.</p>';
 
         const html = `
-            <div class="no-print" style="margin-bottom:20px;"><button onclick="window.print()" style="background:#d67a2c; color:white;"><i class="fas fa-print"></i> Çap et / PDF</button></div>
+            <div class="no-print" style="margin-bottom:20px;"><button 
+
+onclick="window.print()" style="background:#d67a2c; color:white;"><i class="fas fa-
+
+print"></i> Çap et / PDF</button></div>
             <h2><i class="fas fa-chart-simple"></i> İnkişaf profili</h2>
-            <p><strong>Uşaq:</strong> ${child} &nbsp;| <strong>Yaş:</strong> ${age} &nbsp;| <strong>Mütəxəssis:</strong> ${expert} &nbsp;| <strong>Tarix:</strong> ${date}</p>
+            <p><strong>Uşaq:</strong> ${child} &nbsp;| <strong>Yaş:</strong> ${age} &nbsp;| 
+
+<strong>Mütəxəssis:</strong> ${expert} &nbsp;| <strong>Tarix:</strong> ${date}</p>
             <p><strong>📊 Ümumi göstərici:</strong> ${overall.toFixed(1)}%</p>
             <h3>📍 Sahə profili</h3>
-            ${domainStats.map(s => `<div style="margin:8px 0"><strong>${s.name}</strong> ${s.percent !== null ? s.percent.toFixed(1)+'%' : '—'} ${s.riskLevel}<progress value="${s.percent || 0}" max="100" style="width:60%; height:10px; border-radius:10px;"></progress></div>`).join('')}
+            ${domainStats.map(s => `<div style="margin:8px 0"><strong>${s.name}</strong> 
+
+${s.percent !== null ? s.percent.toFixed(1)+'%' : '—'} ${s.riskLevel}<progress 
+
+value="${s.percent || 0}" max="100" style="width:60%; height:10px; border-
+
+radius:10px;"></progress></div>`).join('')}
             <h3><i class="fas fa-lightbulb"></i> Klinik şərh</h3>
             ${detailedAdvice}
             <h3><i class="fas fa-hands-helping"></i> Valideynlər üçün tövsiyələr</h3>
             ${parentAdvice}
             <h3><i class="fas fa-history"></i> Anamnez</h3>
             <p>${anamnez}</p>
-            <p style="margin-top:28px;"><strong>İmza:</strong> ______________________ (${expert})</p>
-            <p style="font-size:0.7rem;">Bu hesabat reabilitasiya mərkəzlərinə istiqamətləndirmə məqsədi daşıyır, diaqnoz qoymur.</p>
+            <p style="margin-top:28px;"><strong>İmza:</strong> ______________________ 
+
+(${expert})</p>
+            <p style="font-size:0.7rem;">Bu hesabat reabilitasiya mərkəzlərinə 
+
+istiqamətləndirmə məqsədi daşıyır, diaqnoz qoymur.</p>
         `;
         document.getElementById('resultPanel').innerHTML = html;
         document.getElementById('resultPanel').classList.add('show');
-        window.scrollTo({ top: document.getElementById('resultPanel').offsetTop-20, behavior: 'smooth' });
+        window.scrollTo({ top: document.getElementById('resultPanel').offsetTop-20, 
+
+behavior: 'smooth' });
     }
 
     function printReport() { window.print(); }
