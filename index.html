@@ -3,100 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>İnkişaf Rotası | Peşəkar Dəyərləndirmə</title>
-    <!-- Font Awesome İkonlar -->
+    <title>Erkən İnkişaf Dəyərləndirmə Platforması | s_akhundoff</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            background: linear-gradient(135deg, #e0f0ff 0%, #f5e6ff 100%);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #eef2fa 0%, #e0e8f0 100%);
+            font-family: 'Inter', sans-serif;
             padding: 30px 20px;
-            color: #1e2f3e;
-            min-height: 100vh;
+            color: #1a2e3f;
         }
-
         .container {
             max-width: 1400px;
             margin: 0 auto;
         }
-
-        /* Dekorativ arxa plan elementləri */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(255,215,180,0.2) 0%, rgba(255,215,180,0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Kart görünüşü */
-        .card {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
+        /* başlıq kartı */
+        .hero-card {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(6px);
             border-radius: 48px;
-            padding: 28px 32px;
-            margin-bottom: 28px;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Başlıq — daha canlı */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            padding: 28px 36px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            border: 1px solid rgba(255,255,240,0.6);
+            transition: 0.2s;
         }
         h1 {
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             font-weight: 800;
-            background: linear-gradient(125deg, #1c6b54, #e67e22, #9b59b6);
+            background: linear-gradient(125deg, #1f6e8c, #2c9b77, #f4a261);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.02em;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
+            letter-spacing: -0.5px;
+            display: inline-block;
         }
-        .badge-new {
-            background: #ffedd5;
-            padding: 8px 18px;
+        .title-badge {
+            background: #f1efdcb3;
             border-radius: 80px;
-            font-size: 0.8rem;
+            padding: 6px 20px;
+            font-size: 0.85rem;
             font-weight: 600;
-            color: #b45309;
-            box-shadow: 0 2px 8px rgba(180,83,9,0.2);
+            color: #2b6e5c;
+            margin-left: 16px;
         }
-        .subhead {
-            font-size: 1rem;
-            color: #4a6a7e;
-            border-left: 4px solid #f39c12;
-            padding-left: 16px;
-            margin-top: 8px;
-            font-weight: 500;
-        }
-
-        /* Form elementləri */
         .form-row {
             display: flex;
             flex-wrap: wrap;
@@ -108,92 +64,66 @@
             min-width: 170px;
         }
         label {
+            font-weight: 700;
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 700;
-            color: #2c6e5c;
+            color: #3f7e6b;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         input, select, textarea {
             width: 100%;
             padding: 12px 18px;
-            border-radius: 60px;
-            border: none;
-            background: #fefcf7;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), inset 0 1px 2px rgba(0,0,0,0.02);
-            font-family: inherit;
+            border-radius: 36px;
+            border: 1px solid #c8dfea;
+            background: white;
+            font-family: 'Inter';
             transition: 0.2s;
-            border: 1px solid #fee3c0;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #f1b05e;
-            box-shadow: 0 0 0 3px rgba(241,176,94,0.2);
+            border-color: #f4a261;
+            box-shadow: 0 0 0 3px rgba(244,162,97,0.2);
         }
-
-        /* Domain bölmələri - şık kartlar */
         .domain-area {
             background: white;
-            border-radius: 40px;
+            border-radius: 32px;
             margin-bottom: 28px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.1);
-            transition: all 0.25s;
-            border: 1px solid rgba(255,215,170,0.6);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transition: all 0.2s;
+            border: 1px solid #f5e5d8;
         }
         .domain-header {
-            background: linear-gradient(95deg, #fff8f0, #fff2e4);
-            padding: 18px 28px;
+            background: #fffdf9;
+            padding: 16px 28px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #ffe0be;
+            border-radius: 32px 32px 28px 28px;
+            border-bottom: 1px solid #f5e2d0;
         }
         .domain-title {
-            font-size: 1.3rem;
             font-weight: 700;
-            color: #c75a2a;
+            font-size: 1.2rem;
+            color: #ca6f3a;
             display: flex;
-            align-items: center;
             gap: 12px;
-        }
-        .domain-title i {
-            font-size: 1.5rem;
-            color: #e67e22;
-        }
-        .collapse-icon {
-            font-size: 1.3rem;
-            color: #e67e22;
-            transition: 0.2s;
+            align-items: center;
         }
         .domain-body {
-            padding: 12px 24px 20px 28px;
-            background: #ffffff;
+            padding: 8px 24px 20px 24px;
         }
         .subskill-item {
-            padding: 14px 6px;
-            border-bottom: 1px solid #f5e1cf;
-            transition: background 0.15s;
-        }
-        .subskill-item:hover {
-            background: #fefaf5;
-            border-radius: 28px;
-            padding-left: 12px;
+            padding: 14px 8px;
+            border-bottom: 1px solid #f9ede2;
         }
         .subskill-text {
             font-weight: 600;
-            margin-bottom: 10px;
-            color: #2e5c70;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .subskill-text i {
-            color: #f4a261;
-            font-size: 0.9rem;
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+            color: #2f5e6e;
         }
         .rating-buttons {
             display: flex;
@@ -201,33 +131,31 @@
             gap: 10px;
         }
         .rating-opt {
-            background: #fef8f2;
-            border: 1px solid #ffe3cf;
+            background: #f9fcff;
+            border: 1px solid #dde7ef;
             border-radius: 60px;
             padding: 6px 16px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.15s;
-            color: #4b6e82;
+            transition: 0.1s;
         }
         .rating-opt.selected {
-            background: #2c9b77;
-            border-color: #1f6f5e;
+            background: #2a9d8f;
+            border-color: #227e6e;
             color: white;
-            box-shadow: 0 2px 8px rgba(44,155,119,0.3);
         }
         .not-obs.selected {
-            background: #e67e22;
-            border-color: #b45f1b;
+            background: #e0a878;
+            border-color: #bc7842;
             color: white;
         }
-        /* Düymələr */
         .action-bar {
             display: flex;
             gap: 16px;
             justify-content: flex-end;
-            margin: 32px 0 24px;
+            flex-wrap: wrap;
+            margin: 28px 0 20px;
         }
         button {
             border: none;
@@ -236,82 +164,91 @@
             font-weight: 700;
             font-size: 0.85rem;
             cursor: pointer;
-            transition: 0.2s;
             background: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: 0.15s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         button.primary {
-            background: linear-gradient(105deg, #2a9d8f, #21867a);
+            background: linear-gradient(105deg, #2a9d8f, #238276);
             color: white;
         }
         button.primary:hover {
-            background: linear-gradient(105deg, #21867a, #1a6b61);
             transform: translateY(-2px);
+            background: #217a6b;
         }
-        button.secondary {
-            background: #f0e7de;
-            color: #a65728;
+        .archive-section {
+            background: white;
+            border-radius: 36px;
+            padding: 20px 28px;
+            margin: 20px 0 30px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
         }
-        button.secondary:hover {
-            background: #e6d8cb;
+        .archive-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #216e58;
+            margin-bottom: 16px;
+            border-left: 5px solid #f4a261;
+            padding-left: 18px;
         }
-        /* Hesabat paneli */
+        .test-list {
+            max-height: 270px;
+            overflow-y: auto;
+            border: 1px solid #ecf0f3;
+            border-radius: 28px;
+        }
+        .test-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid #f0e9e2;
+        }
+        .test-info {
+            font-weight: 500;
+        }
+        .test-info i {
+            color: #f4a261;
+            width: 28px;
+        }
+        .view-test-btn {
+            background: #ecf3f0;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
         .result-panel {
-            background: #ffffffdd;
-            backdrop-filter: blur(12px);
+            background: #fffef7;
             border-radius: 48px;
-            padding: 32px;
-            display: none;
+            padding: 34px;
             margin-top: 32px;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255,245,225,0.9);
+            display: none;
+            border: 1px solid #ffebd2;
+            box-shadow: 0 24px 40px -18px rgba(0,0,0,0.2);
         }
         .result-panel.show {
             display: block;
-            animation: slideUp 0.4s ease;
+            animation: fadeUp 0.35s ease;
         }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px);}
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(15px);}
             to { opacity: 1; transform: translateY(0);}
         }
-        /* Footer */
         footer {
             text-align: center;
             margin-top: 55px;
-            padding: 20px;
+            padding: 18px;
             font-size: 0.8rem;
-            color: #6e8ca0;
+            color: #6b8b9e;
         }
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #ffffffaa;
-            padding: 8px 20px;
-            border-radius: 60px;
+        .instagram-link {
+            color: #c13584;
             text-decoration: none;
-            color: #3a6377;
-            font-weight: 500;
-            transition: 0.2s;
-            backdrop-filter: blur(4px);
-        }
-        .social-link i {
-            font-size: 1.3rem;
-            color: #e4405f;
-        }
-        .social-link:hover {
-            background: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transform: scale(1.02);
-        }
-
-        @media (max-width: 700px) {
-            .card, .domain-header { padding: 16px 20px; }
-            .rating-opt { padding: 4px 12px; font-size: 0.7rem; }
-            h1 { font-size: 1.8rem; }
+            font-weight: 600;
         }
         @media print {
-            .no-print, .action-bar, .rating-buttons, .collapse-icon, button, footer, .social-link {
+            .no-print, .action-bar, .archive-section, .rating-buttons, .collapse-icon, button {
                 display: none;
             }
             .result-panel {
@@ -320,47 +257,68 @@
                 padding: 0;
             }
         }
+        progress {
+            height: 8px;
+            border-radius: 12px;
+            width: 60%;
+        }
+        .domain-score {
+            background: #fefaf0;
+            padding: 10px 18px;
+            border-radius: 40px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="card no-print">
-        <div class="hero">
-            <h1><i class="fas fa-chalkboard-user"></i> ERKƏN İNKİŞAF <span class="badge-new">Peşəkar şablon</span></h1>
-        </div>
-        <div class="subhead">
-            <i class="fas fa-hand-holding-heart"></i> Xüsusi qayğıya ehtiyacı olan uşaqlar üçün strukturlaşdırılmış dəyərləndirmə
+    <!-- başlıq -->
+    <div class="hero-card no-print">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap:wrap;">
+            <div>
+                <h1>🌱 İnkişaf İz<i class="fas fa-seedling"></i> </h1>
+                <span class="title-badge">peşəkar dəyərləndirmə şablonu</span>
+            </div>
+            <div><i class="fas fa-child" style="font-size: 2.4rem; color:#f4a261;"></i></div>
         </div>
         <div class="form-row">
-            <div class="form-group"><label><i class="fas fa-user"></i> Uşaq kodu</label><input type="text" id="childCode" placeholder="Məs: AZ-R-001"></div>
+            <div class="form-group"><label><i class="fas fa-user"></i> Uşağın adı</label><input type="text" id="childName" placeholder="Ayan"></div>
+            <div class="form-group"><label><i class="fas fa-user-tag"></i> Soyadı</label><input type="text" id="childSurname" placeholder="Məmmədova"></div>
             <div class="form-group"><label><i class="fas fa-calendar-alt"></i> Yaş (il/ay)</label><input type="text" id="childAge" placeholder="4 il 2 ay"></div>
             <div class="form-group"><label><i class="fas fa-venus-mars"></i> Cins</label><select id="childGender"><option>Qız</option><option>Oğlan</option></select></div>
-            <div class="form-group"><label><i class="fas fa-user-md"></i> Mütəxəssis</label><input type="text" id="expert" placeholder="Ad, vəzifə"></div>
+            <div class="form-group"><label><i class="fas fa-microscope"></i> Mütəxəssis</label><input type="text" id="expert" placeholder="Pedaqoq/Psixoloq"></div>
             <div class="form-group"><label><i class="fas fa-calendar-week"></i> Tarix</label><input type="date" id="evalDate"></div>
         </div>
-        <div class="form-group"><label><i class="fas fa-notes-medical"></i> Qısa anamnez / Valideyn şikayəti</label><textarea rows="2" id="history" placeholder="Doğum, erkən inkişaf, əvvəlki dəstəklər, əsas narahatlıqlar..."></textarea></div>
+        <div class="form-group"><label><i class="fas fa-notes-medical"></i> Anamnez / Valideyn şikayəti</label><textarea rows="2" id="history" placeholder="Doğum, erkən inkişaf, əvvəlki dəstəklər..."></textarea></div>
     </div>
 
+    <!-- suallar dinamik yüklənəcək -->
     <div id="domainsContainer"></div>
 
     <div class="action-bar no-print">
-        <button id="resetBtn" class="secondary"><i class="fas fa-undo-alt"></i> Sıfırla</button>
-        <button id="reportBtn" class="primary"><i class="fas fa-file-alt"></i> İnkişaf profili + Tövsiyələr</button>
-        <button id="printBtn" class="secondary"><i class="fas fa-print"></i> Hesabatı çap et</button>
+        <button id="resetBtn" class="secondary"><i class="fas fa-trash-alt"></i> Sıfırla</button>
+        <button id="reportBtn" class="primary"><i class="fas fa-file-alt"></i> Profil + Tövsiyələr</button>
+        <button id="printBtn" class="secondary"><i class="fas fa-print"></i> Çap et</button>
+    </div>
+
+    <!-- Arxiv bölməsi -->
+    <div class="archive-section no-print" id="archiveSection">
+        <div class="archive-title"><i class="fas fa-archive"></i> Keçirilmiş dəyərləndirmələr</div>
+        <div id="testArchiveList" class="test-list">
+            <!-- dinamik siyahı -->
+        </div>
+        <p style="font-size:0.7rem; margin-top:10px;"><i class="fas fa-info-circle"></i> Hər hesabat avtomatik arxivlənir. "Testə bax" ilə keçmiş cavabları yükləyin.</p>
     </div>
 
     <div id="resultPanel" class="result-panel"></div>
-
     <footer class="no-print">
-        <a href="https://www.instagram.com/s_akhundoff" target="_blank" class="social-link">
-            <i class="fab fa-instagram"></i> by s_akhundoff
-        </a>
-        <p style="margin-top: 16px;">Bu alət standartlaşdırılmış test deyil, reabilitasiya mərkəzlərinə istiqamətləndirmə məqsədi daşıyır.</p>
+        <i class="fas fa-heart" style="color:#f4a261;"></i> peşəkar dəyərləndirmə platforması &nbsp;|&nbsp;
+        <a href="https://instagram.com/s_akhundoff" target="_blank" class="instagram-link"><i class="fab fa-instagram"></i> by s_akhundoff</a>
     </footer>
 </div>
 
 <script>
-    // ========= 10 KLİNİK DOMAIN – tam eyni suallar, heç nə dəyişilməyib =========
+    // ======================= 10 DOMAIN (DƏYİŞMƏYİB) =======================
     const domains = [
         { name: "🏃 Qabaq motor (ümumi hərəkət)", items: ["Baş nəzarəti oturaq vəziyyətdə", "Dayanma tarazlığı (ən az 10 saniyə)", "Pilləkənləri növbəli ayaqla çıxma", "Topu tutma və atma (2 m məsafə)", "Bir ayaq üstə dayanma (3-5 saniyə)", "Sıçrayış və tullanma (hər iki ayaqla)"] },
         { name: "✍️ İncə motor (əl bacarığı)", items: ["Qələmi tripod tutuşla saxlama", "Xətt çəkmə (şaquli/üfüqi) nüsxəsi", "Muncuqları ipə düzmə (≥4 ədəd)", "Düymələri açıb bağlama", "Makasla sadə formaları kəsmə", "Kiçik leqo və ya bərkidiciləri birləşdirmə"] },
@@ -377,6 +335,120 @@
     let answers = Array(domains.length).fill().map(() => Array(domains[0].items.length).fill(null));
     let optButtons = [];
 
+    // Arxiv: testlərin saxlanması
+    let testArchive = [];
+
+    function loadArchiveFromLocal() {
+        const saved = localStorage.getItem('rehab_test_archive');
+        if(saved) testArchive = JSON.parse(saved);
+        renderArchiveList();
+    }
+    function saveArchiveToLocal() {
+        localStorage.setItem('rehab_test_archive', JSON.stringify(testArchive));
+        renderArchiveList();
+    }
+    function addCurrentTestToArchive() {
+        const childName = document.getElementById('childName').value.trim();
+        const childSurname = document.getElementById('childSurname').value.trim();
+        const date = document.getElementById('evalDate').value || new Date().toISOString().slice(0,10);
+        if(!childName && !childSurname) {
+            alert("Arxiv üçün uşağın adını daxil edin.");
+            return false;
+        }
+        const fullName = `${childName} ${childSurname}`.trim();
+        const archiveItem = {
+            id: Date.now(),
+            name: fullName,
+            surname: childSurname,
+            date: date,
+            answers: JSON.parse(JSON.stringify(answers)), // dərin kopya
+            meta: {
+                childName, childSurname, childAge: document.getElementById('childAge').value,
+                childGender: document.getElementById('childGender').value,
+                expert: document.getElementById('expert').value,
+                evalDate: date,
+                history: document.getElementById('history').value
+            }
+        };
+        testArchive.unshift(archiveItem); // ən yenisi başda
+        if(testArchive.length > 30) testArchive.pop();
+        saveArchiveToLocal();
+        return true;
+    }
+    function renderArchiveList() {
+        const container = document.getElementById('testArchiveList');
+        if(!container) return;
+        if(testArchive.length === 0) {
+            container.innerHTML = '<div style="padding:20px; text-align:center; color:#8ba9bb;">Hələ heç bir dəyərləndirmə arxivlənməyib.</div>';
+            return;
+        }
+        container.innerHTML = '';
+        testArchive.forEach(test => {
+            const div = document.createElement('div');
+            div.className = 'test-item';
+            div.innerHTML = `
+                <div class="test-info"><i class="fas fa-child"></i> ${test.name} &nbsp;| <i class="far fa-calendar-alt"></i> ${test.date}</div>
+                <button class="view-test-btn" data-id="${test.id}"><i class="fas fa-eye"></i> Testə bax</button>
+            `;
+            container.appendChild(div);
+        });
+        document.querySelectorAll('.view-test-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.dataset.id);
+                const found = testArchive.find(t => t.id === id);
+                if(found) loadArchivedTest(found);
+            });
+        });
+    }
+    function loadArchivedTest(test) {
+        if(confirm("Arxivdəki test yüklənəcək. Hazırkı cavablar itəcək. Davam?")) {
+            answers = JSON.parse(JSON.stringify(test.answers));
+            for(let d=0; d<domains.length; d++)
+                for(let i=0; i<domains[d].items.length; i++)
+                    if(optButtons[d]?.[i]) updateButtonStyles(d,i);
+            document.getElementById('childName').value = test.meta.childName || '';
+            document.getElementById('childSurname').value = test.meta.surname || '';
+            document.getElementById('childAge').value = test.meta.childAge || '';
+            document.getElementById('childGender').value = test.meta.childGender || 'Qız';
+            document.getElementById('expert').value = test.meta.expert || '';
+            document.getElementById('evalDate').value = test.meta.evalDate || '';
+            document.getElementById('history').value = test.meta.history || '';
+            saveCurrentToLocal();
+            document.getElementById('resultPanel').classList.remove('show');
+        }
+    }
+    function saveCurrentToLocal() {
+        const data = {
+            answers,
+            childName: document.getElementById('childName').value,
+            childSurname: document.getElementById('childSurname').value,
+            childAge: document.getElementById('childAge').value,
+            childGender: document.getElementById('childGender').value,
+            expert: document.getElementById('expert').value,
+            evalDate: document.getElementById('evalDate').value,
+            history: document.getElementById('history').value
+        };
+        localStorage.setItem('rehab_current_data', JSON.stringify(data));
+    }
+    function loadCurrentFromLocal() {
+        const saved = localStorage.getItem('rehab_current_data');
+        if(saved) {
+            const data = JSON.parse(saved);
+            if(data.answers) answers = data.answers;
+            document.getElementById('childName').value = data.childName || '';
+            document.getElementById('childSurname').value = data.childSurname || '';
+            document.getElementById('childAge').value = data.childAge || '';
+            document.getElementById('childGender').value = data.childGender || 'Qız';
+            document.getElementById('expert').value = data.expert || '';
+            document.getElementById('evalDate').value = data.evalDate || '';
+            document.getElementById('history').value = data.history || '';
+            for(let d=0;d<domains.length;d++)
+                for(let i=0;i<domains[d].items.length;i++)
+                    if(optButtons[d]?.[i]) updateButtonStyles(d,i);
+        }
+    }
+
+    // Render suallar (əvvəlki stabil mexanizm)
     function renderDomains() {
         const container = document.getElementById('domainsContainer');
         container.innerHTML = '';
@@ -386,66 +458,45 @@
             section.className = 'domain-area';
             const header = document.createElement('div');
             header.className = 'domain-header';
-            header.innerHTML = `<div class="domain-title"><i class="fas fa-brain"></i> ${domain.name}</div><div class="collapse-icon no-print"><i class="fas fa-chevron-down"></i></div>`;
+            header.innerHTML = `<div class="domain-title">${domain.name}</div><div class="collapse-icon no-print">▼</div>`;
             const body = document.createElement('div');
             body.className = 'domain-body';
-            section.appendChild(header);
-            section.appendChild(body);
+            section.appendChild(header); section.appendChild(body);
             container.appendChild(section);
-
             domain.items.forEach((item, iIdx) => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'subskill-item';
-                itemDiv.innerHTML = `<div class="subskill-text"><i class="fas fa-caret-right"></i> ${iIdx+1}. ${item}</div><div class="rating-buttons" data-d="${dIdx}" data-i="${iIdx}"></div>`;
+                itemDiv.innerHTML = `<div class="subskill-text">${iIdx+1}. ${item}</div><div class="rating-buttons" data-d="${dIdx}" data-i="${iIdx}"></div>`;
                 body.appendChild(itemDiv);
                 const btnContainer = itemDiv.querySelector('.rating-buttons');
                 const btns = [];
-                for (let v=0; v<=4; v++) {
+                for(let v=0;v<=4;v++) {
                     const btn = document.createElement('div');
                     btn.className = 'rating-opt';
-                    let label = '';
-                    if(v===0) label='0 - bacarmır / tam kömək';
-                    else if(v===1) label='1 - minimal uyğunluq';
-                    else if(v===2) label='2 - qismən uyğun (dəstək ilə)';
-                    else if(v===3) label='3 - davamlı monitorinqlə uyğun';
-                    else label='4 - yaşa tam uyğun';
+                    let label = v===0?'0 - bacarmır':v===1?'1 - minimal kömək':v===2?'2 - qismən':v===3?'3 - yaxın monitorinq':'4 - yaşa uyğun';
                     btn.textContent = label;
                     btn.dataset.val = v;
-                    btn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        setAnswer(dIdx, iIdx, v);
-                    });
-                    btnContainer.appendChild(btn);
-                    btns.push(btn);
+                    btn.addEventListener('click', (e) => { e.stopPropagation(); setAnswer(dIdx,iIdx,v); });
+                    btnContainer.appendChild(btn); btns.push(btn);
                 }
                 const notBtn = document.createElement('div');
                 notBtn.className = 'rating-opt not-obs';
-                notBtn.innerHTML = '<i class="fas fa-eye-slash"></i> Müşahidə olunmayıb';
-                notBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    setAnswer(dIdx, iIdx, null);
-                });
-                btnContainer.appendChild(notBtn);
-                btns.push(notBtn);
+                notBtn.textContent = '🚫 Müşahidə yox';
+                notBtn.addEventListener('click', (e) => { e.stopPropagation(); setAnswer(dIdx,iIdx,null); });
+                btnContainer.appendChild(notBtn); btns.push(notBtn);
                 if(!optButtons[dIdx]) optButtons[dIdx] = [];
                 optButtons[dIdx][iIdx] = btns;
-                updateButtonStyles(dIdx, iIdx);
+                updateButtonStyles(dIdx,iIdx);
             });
             let collapsed = false;
             header.addEventListener('click', () => {
                 collapsed = !collapsed;
                 body.style.display = collapsed ? 'none' : 'block';
-                header.querySelector('.collapse-icon').innerHTML = collapsed ? '<i class="fas fa-chevron-right"></i>' : '<i class="fas fa-chevron-down"></i>';
+                header.querySelector('.collapse-icon').innerHTML = collapsed ? '▶' : '▼';
             });
         });
     }
-
-    function setAnswer(d,i,val) {
-        answers[d][i] = val;
-        updateButtonStyles(d,i);
-        saveToLocal();
-    }
-
+    function setAnswer(d,i,val) { answers[d][i] = val; updateButtonStyles(d,i); saveCurrentToLocal(); }
     function updateButtonStyles(d,i) {
         const btns = optButtons[d]?.[i];
         if(!btns) return;
@@ -456,140 +507,133 @@
                 if(current !== null && parseInt(btnVal) === current) btn.classList.add('selected');
                 else btn.classList.remove('selected');
             } else {
-                if(current === null) btn.classList.add('selected');
-                else btn.classList.remove('selected');
+                if(current === null) btn.classList.add('selected'); else btn.classList.remove('selected');
             }
         });
     }
-
-    function saveToLocal() {
-        const data = {
-            answers,
-            childCode: document.getElementById('childCode').value,
-            childAge: document.getElementById('childAge').value,
-            childGender: document.getElementById('childGender').value,
-            expert: document.getElementById('expert').value,
-            evalDate: document.getElementById('evalDate').value,
-            history: document.getElementById('history').value
-        };
-        localStorage.setItem('rehab_test_data', JSON.stringify(data));
-    }
-
-    function loadFromLocal() {
-        const saved = localStorage.getItem('rehab_test_data');
-        if(saved) {
-            try {
-                const data = JSON.parse(saved);
-                if(data.answers) answers = data.answers;
-                document.getElementById('childCode').value = data.childCode || '';
-                document.getElementById('childAge').value = data.childAge || '';
-                document.getElementById('childGender').value = data.childGender || 'Qız';
-                document.getElementById('expert').value = data.expert || '';
-                document.getElementById('evalDate').value = data.evalDate || '';
-                document.getElementById('history').value = data.history || '';
-                for(let d=0; d<domains.length; d++)
-                    for(let i=0; i<domains[d].items.length; i++)
-                        if(optButtons[d]?.[i]) updateButtonStyles(d,i);
-            } catch(e) {}
-        }
-    }
-
     function resetAll() {
-        if(!confirm('Bütün cavablar silinsin? Bu əməliyyat geri alınmaz.')) return;
+        if(!confirm('Təmizlənsin? Bütün cavablar silinəcək.')) return;
         answers = Array(domains.length).fill().map(() => Array(domains[0].items.length).fill(null));
-        for(let d=0; d<domains.length; d++)
-            for(let i=0; i<domains[d].items.length; i++)
-                updateButtonStyles(d,i);
-        document.getElementById('childCode').value = '';
+        for(let d=0;d<domains.length;d++) for(let i=0;i<domains[d].items.length;i++) updateButtonStyles(d,i);
+        document.getElementById('childName').value = '';
+        document.getElementById('childSurname').value = '';
         document.getElementById('childAge').value = '';
         document.getElementById('childGender').value = 'Qız';
         document.getElementById('expert').value = '';
         document.getElementById('evalDate').value = '';
         document.getElementById('history').value = '';
-        saveToLocal();
+        saveCurrentToLocal();
         document.getElementById('resultPanel').classList.remove('show');
     }
 
-    function getParentAdvice(overallPercent) {
+    // HESABAT – GENİŞ VALİDEYN TÖVSİYƏLƏRİ VƏ PEŞƏKAR QİYMƏTLƏNDİRMƏ
+    function getExpandedParentAdvice(level, overallPercent) {
         if(overallPercent < 35) {
-            return `<div style="background:#ffe6e6; padding:20px; border-radius:28px;"><h4><i class="fas fa-exclamation-triangle"></i> Yüksək dəstək ehtiyacı – təcili reabilitasiya</h4><ul><li>Dərhal reabilitasiya mərkəzinə müraciət edin</li><li>Gündəlik strukturlaşdırılmış oyun vaxtı (20-30 dəq)</li><li>Vizual dəstəklər (cədvəl, şəkillər) hazırlayın</li><li>Hər kiçik uğuru tərifləyin</li><li>Özünüzə də psixoloji dəstək alın</li></ul></div>`;
+            return `<div style="background:#ffefef; padding:22px; border-radius:32px;"><h4><i class="fas fa-exclamation-triangle"></i> Yüksək dəstək ehtiyacı – təcili reabilitasiya proqramı</h4>
+            <ul><li><i class="fas fa-clinic-medical"></i> Dərhal reabilitasiya mərkəzində hərtərəfli dəyərləndirmə və fərdi təhsil planı (FTP) alın.</li>
+            <li><i class="fas fa-home"></i> Evdə gündəlik 30 dəqiqə strukturlaşdırılmış fəaliyyət: incə motor üçün plastilin, dil üçün şəkil kartları.</li>
+            <li><i class="fas fa-chalkboard-teacher"></i> Vizual cədvəl və “əvvəl – sonra” lövhəsi istifadə edin. Hər kiçik uğuru dərhal tərifləyin.</li>
+            <li><i class="fas fa-heartbeat"></i> Valideyn olaraq psixoloji dəstək alın, stress idarəsi üsullarını öyrənin.</li>
+            <li><i class="fas fa-calendar-week"></i> Həftədə ən az 3 gün peşəkar terapiya (dil, əmək, sensor inteqrasiya) tövsiyə olunur.</li></ul></div>`;
         } else if(overallPercent < 55) {
-            return `<div style="background:#fff0e0; padding:20px; border-radius:28px;"><h4><i class="fas fa-chart-line"></i> Orta dərəcəli dəstək – hədəflənmiş terapiya</h4><ul><li>Reabilitasiya mərkəzində həftədə 1-2 seans</li><li>Evdə gündəlik 15 dəqiqəlik inkişaf saatı</li><li>Müsbət davranış dəstəyi və etika sistemi qurun</li><li>Yaşıd qruplarına cəlb edin</li><li>Gündəlik iş rejimini sabitləşdirin</li></ul></div>`;
+            return `<div style="background:#fff2e0; padding:22px; border-radius:32px;"><h4><i class="fas fa-chart-line"></i> Orta dəstək – məqsədli müdaxilə proqramı</h4>
+            <ul><li><i class="fas fa-hand-holding-heart"></i> Reabilitasiya mərkəzində həftədə 1-2 dəfə terapiya (zəif sahələrə yönəlmiş).</li>
+            <li><i class="fas fa-puzzle-piece"></i> Evdə hər gün 15 dəqiqə oyun terapiyası: leqo, yapışqanlı boncuklar, sosial hekayələr.</li>
+            <li><i class="fas fa-smile"></i> Müsbət davranış dəstəyi: istənilən davranışdan sonra dərhal mükafat (etikalar, sevimli oyuncaq).</li>
+            <li><i class="fas fa-users"></i> Yaşıd qrup oyunlarına cəlb edin (rəsm, musiqi, nağıl saatı).</li>
+            <li><i class="fas fa-chart-simple"></i> 3 aydan sonra təkrar dəyərləndirmə aparın.</li></ul></div>`;
         } else if(overallPercent < 75) {
-            return `<div style="background:#fef7e0; padding:20px; border-radius:28px;"><h4><i class="fas fa-leaf"></i> Yüngül çətinlik – monitorinq və gücləndirmə</h4><ul><li>Hər gün birlikdə kitab oxuyun, şəkillər haqqında danışın</li><li>Onun maraqlarına əsaslanan oyunlar seçin</li><li>Rol oyunları ilə sosial bacarıqları artırın</li><li>İncə motor üçün mozaika, boncuk işləri</li><li>6 ay sonra təkrar dəyərləndirmə</li></ul></div>`;
+            return `<div style="background:#fef8e8; padding:22px; border-radius:32px;"><h4><i class="fas fa-leaf"></i> Yüngül çətinlik – gücləndirici ev mühiti</h4>
+            <ul><li><i class="fas fa-book-open"></i> Hər axşam birlikdə kitab oxuyun, şəkillər haqqında sual-cavab edin.</li>
+            <li><i class="fas fa-dice"></i> Həftədə 3 dəfə “rol oyunları”: alverçi, doktor, məktəb – sosial bacarıqları artırır.</li>
+            <li><i class="fas fa-paintbrush"></i> İncə motor üçün mozaika, rəngləmə, barmaq boyaları.</li>
+            <li><i class="fas fa-tree"></i> Təbiət gəzintiləri, idman fəaliyyətləri (velosiped, üzgüçülük) koqnitiv inkişafı dəstəkləyir.</li>
+            <li><i class="fas fa-calendar-check"></i> 6 ay sonra təkrar dəyərləndirmə planlaşdırın.</li></ul></div>`;
         } else {
-            return `<div style="background:#e0f5ee; padding:20px; border-radius:28px;"><h4><i class="fas fa-star"></i> Yaş norması – dəstəkləyici mühit</h4><ul><li>Müxtəlif fəaliyyətlər (rəsm, musiqi, idman)</li><li>Açıq uclu suallar verin, cavablarını dinləyin</li><li>Yaşıdları ilə vaxt keçirməsini təşviq edin</li><li>Hər axşam hekayə oxumağı vərdiş halına gətirin</li><li>İldə bir dəfə profilaktik dəyərləndirmə</li></ul></div>`;
+            return `<div style="background:#e0f5ee; padding:22px; border-radius:32px;"><h4><i class="fas fa-star-of-life"></i> Yaş normasına uyğun – dəstəkləyici mühit</h4>
+            <ul><li><i class="fas fa-music"></i> Müxtəlif stimullar: musiqi, rəsm, idman, eksperimentlər.</li>
+            <li><i class="fas fa-comments"></i> Açıq uclu suallar verin, uşağın fikirlərini dinləyin və genişləndirin.</li>
+            <li><i class="fas fa-hand-peace"></i> Sosial bacarıqlar üçün qrup fəaliyyətləri (bağça, klub).</li>
+            <li><i class="fas fa-heart"></i> Müntəzəm ailə vaxtı, birgə oyunlar, səyahətlər.</li>
+            <li><i class="fas fa-chart-line"></i> Hər il profilaktik dəyərləndirmə tövsiyə olunur.</li></ul></div>`;
         }
     }
 
     function generateReport() {
-        const child = document.getElementById('childCode').value || 'Uşaq';
+        const name = document.getElementById('childName').value.trim();
+        const surname = document.getElementById('childSurname').value.trim();
+        const fullName = (name + " " + surname).trim() || "Uşaq";
         const age = document.getElementById('childAge').value || '?';
         const expert = document.getElementById('expert').value || 'Mütəxəssis';
         const date = document.getElementById('evalDate').value || new Date().toLocaleDateString();
-        const anamnez = document.getElementById('history').value || 'Məlumat daxil edilməyib.';
+        const anamnez = document.getElementById('history').value || 'Məlumat yoxdur.';
 
         let domainStats = [];
-        for(let d=0; d<domains.length; d++) {
+        for(let d=0;d<domains.length;d++) {
             let sum=0, count=0;
-            for(let i=0; i<domains[d].items.length; i++) {
-                if(answers[d][i] !== null) {
-                    sum += answers[d][i];
-                    count++;
-                }
+            for(let i=0;i<domains[d].items.length;i++) {
+                if(answers[d][i] !== null) { sum+=answers[d][i]; count++; }
             }
-            let percent = count === 0 ? null : (sum / (count * 4)) * 100;
-            let riskLevel = '';
-            if(percent === null) riskLevel = 'Məlumat yoxdur';
-            else if(percent < 30) riskLevel = '🔴 Yüksək risk';
-            else if(percent < 55) riskLevel = '🟠 Orta risk';
-            else if(percent < 75) riskLevel = '🟡 Minimal risk';
-            else riskLevel = '🟢 Yaş norması';
-            domainStats.push({ name: domains[d].name, percent, riskLevel });
+            let percent = count===0 ? null : (sum/(count*4))*100;
+            let risk = percent===null ? '—' : (percent<30?'🔴 Yüksək risk':(percent<55?'🟠 Orta risk':(percent<75?'🟡 Yüngül çətinlik':'🟢 Yaş norması')));
+            domainStats.push({ name:domains[d].name, percent, risk });
         }
+        const validPerc = domainStats.filter(s=>s.percent!==null).map(s=>s.percent);
+        const overall = validPerc.length ? validPerc.reduce((a,b)=>a+b,0)/validPerc.length : 0;
+        // Peşəkar qiymətləndirmə hissəsi
+        const strengths = domainStats.filter(s=>s.percent!==null && s.percent>=70).map(s=>s.name.split(' ')[0]).join(', ');
+        const weaknesses = domainStats.filter(s=>s.percent!==null && s.percent<45).map(s=>s.name.split(' ')[0]).join(', ');
+        const clinicalEval = `
+            <div style="background:#faf4e8; border-radius:32px; padding:18px; margin:20px 0;">
+            <h3><i class="fas fa-stethoscope"></i> Klinik qiymətləndirmə (Uşaq psixoloqu rəyi)</h3>
+            <p><strong>📈 Ümumi inkişaf indeksi:</strong> ${overall.toFixed(1)}%</p>
+            <p><strong>✅ Güclü tərəflər:</strong> ${strengths || "müəyyən edilməyib"} </p>
+            <p><strong>⚠️ İnkişaf etdirilməli sahələr:</strong> ${weaknesses || "hamısı yaş normasına yaxın"}</p>
+            <p><strong>🎯 Priorit tədbirlər:</strong> ${overall<45 ? "Təcili müdaxilə planı, həftədə ən az 3 seans terapiya." : (overall<70 ? "Hədəflənmiş terapiya (zəif sahələrə yönəlmiş)" : "Ev proqramı ilə gücləndirmə və monitorinq")}</p>
+            <p><strong>🧩 Tövsiyə olunan terapiya növləri:</strong> ${overall<55 ? "Dil terapiyası, əmək terapiyası, sensor inteqrasiya" : "Oyun terapiyası, ailə məsləhəti"}</p>
+            </div>
+        `;
 
-        const totalPercentArr = domainStats.filter(s => s.percent !== null).map(s => s.percent);
-        const overall = totalPercentArr.length ? totalPercentArr.reduce((a,b)=>a+b,0)/totalPercentArr.length : 0;
-        const parentAdvice = getParentAdvice(overall);
-
-        const highRiskDomains = domainStats.filter(s => s.percent !== null && s.percent < 40).map(s => s.name);
-        let detailedAdvice = '';
-        if(highRiskDomains.length) detailedAdvice = `<p><strong><i class="fas fa-bell"></i> Ən çox dəstək tələb edən sahələr:</strong> ${highRiskDomains.join(', ')}. Reabilitasiya mərkəzində məqsədli terapiya başlanmalıdır.</p>`;
-        else detailedAdvice = '<p>Bütün sahələr monitorinq səviyyəsindədir. Ev proqramı kifayətdir.</p>';
-
+        const parentAdvice = getExpandedParentAdvice(overall, overall);
+        let scoresHtml = '';
+        domainStats.forEach(s => {
+            scoresHtml += `<div class="domain-score"><strong>${s.name}</strong> ${s.percent!==null ? s.percent.toFixed(1)+'%' : '—'} ${s.risk}<progress value="${s.percent||0}" max="100"></progress></div>`;
+        });
         const html = `
-            <div class="no-print" style="margin-bottom:20px;"><button onclick="window.print()" style="background:#d67a2c; color:white;"><i class="fas fa-print"></i> Çap et / PDF</button></div>
-            <h2><i class="fas fa-chart-simple"></i> İnkişaf profili</h2>
-            <p><strong>Uşaq:</strong> ${child} &nbsp;| <strong>Yaş:</strong> ${age} &nbsp;| <strong>Mütəxəssis:</strong> ${expert} &nbsp;| <strong>Tarix:</strong> ${date}</p>
-            <p><strong>📊 Ümumi göstərici:</strong> ${overall.toFixed(1)}%</p>
-            <h3>📍 Sahə profili</h3>
-            ${domainStats.map(s => `<div style="margin:8px 0"><strong>${s.name}</strong> ${s.percent !== null ? s.percent.toFixed(1)+'%' : '—'} ${s.riskLevel}<progress value="${s.percent || 0}" max="100" style="width:60%; height:10px; border-radius:10px;"></progress></div>`).join('')}
-            <h3><i class="fas fa-lightbulb"></i> Klinik şərh</h3>
-            ${detailedAdvice}
-            <h3><i class="fas fa-hands-helping"></i> Valideynlər üçün tövsiyələr</h3>
+            <div class="no-print" style="margin-bottom:18px;"><button onclick="window.print()" style="background:#e98a3e; color:white;"><i class="fas fa-print"></i> Hesabatı çap et</button></div>
+            <h2><i class="fas fa-clipboard-list"></i> Fərdi İnkişaf Profili</h2>
+            <p><strong>Uşaq:</strong> ${fullName} &nbsp;| <strong>Yaş:</strong> ${age} &nbsp;| <strong>Mütəxəssis:</strong> ${expert} &nbsp;| <strong>Tarix:</strong> ${date}</p>
+            ${clinicalEval}
+            <h3><i class="fas fa-chart-simple"></i> Sahə profili</h3>
+            ${scoresHtml}
+            <h3><i class="fas fa-hand-sparkles"></i> Valideynlər üçün ətraflı rəhbərlik</h3>
             ${parentAdvice}
             <h3><i class="fas fa-history"></i> Anamnez</h3>
             <p>${anamnez}</p>
-            <p style="margin-top:28px;"><strong>İmza:</strong> ______________________ (${expert})</p>
-            <p style="font-size:0.7rem;">Bu hesabat reabilitasiya mərkəzlərinə istiqamətləndirmə məqsədi daşıyır, diaqnoz qoymur.</p>
+            <p style="margin-top:28px;"><strong>Mütəxəssis imzası:</strong> ______________________ (${expert})</p>
+            <p style="font-size:0.7rem;">Bu hesabat reabilitasiya mərkəzlərində istifadə üçün yaradılmışdır. Diaqnoz qoymur, peşəkar dəyərləndirməyə istiqamət verir.</p>
         `;
         document.getElementById('resultPanel').innerHTML = html;
         document.getElementById('resultPanel').classList.add('show');
         window.scrollTo({ top: document.getElementById('resultPanel').offsetTop-20, behavior: 'smooth' });
+        // arxivə əlavə et
+        addCurrentTestToArchive();
     }
 
     function printReport() { window.print(); }
 
+    // inits
     renderDomains();
-    loadFromLocal();
+    loadArchiveFromLocal();
+    loadCurrentFromLocal();
     document.getElementById('resetBtn').addEventListener('click', resetAll);
     document.getElementById('reportBtn').addEventListener('click', generateReport);
     document.getElementById('printBtn').addEventListener('click', printReport);
-    ['childCode','childAge','childGender','expert','evalDate','history'].forEach(id => {
+    ['childName','childSurname','childAge','childGender','expert','evalDate','history'].forEach(id => {
         const el = document.getElementById(id);
-        if(el) el.addEventListener('input', saveToLocal);
+        if(el) el.addEventListener('input', saveCurrentToLocal);
     });
-    window.addEventListener('beforeunload', saveToLocal);
+    window.addEventListener('beforeunload', saveCurrentToLocal);
 </script>
 </body>
 </html>
