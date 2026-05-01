@@ -2,10 +2,12 @@
 <html lang="az">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Erkən İnkişaf Dəyərləndirmə Platforması | s_akhundoff</title>
-    <!-- Google Fonts & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>İnkişaf İz | Peşəkar dəyərləndirmə</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" 
+
+rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -13,117 +15,130 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            background: linear-gradient(145deg, #eef2fa 0%, #e0e8f0 100%);
+            background: radial-gradient(circle at 10% 30%, #f5f9ff, #e6edf4);
             font-family: 'Inter', sans-serif;
-            padding: 30px 20px;
-            color: #1a2e3f;
+            padding: 20px 16px;
+            color: #1e3a4a;
         }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        /* başlıq kartı */
+
+        /* Hero / kart */
         .hero-card {
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(6px);
-            border-radius: 48px;
-            padding: 28px 36px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
-            border: 1px solid rgba(255,255,240,0.6);
-            transition: 0.2s;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(2px);
+            border-radius: 56px;
+            padding: 20px 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 220, 0.5);
+            transition: transform 0.2s;
+        }
+
+        .brand {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
         h1 {
-            font-size: 2.4rem;
+            font-size: 2rem;
             font-weight: 800;
-            background: linear-gradient(125deg, #1f6e8c, #2c9b77, #f4a261);
+            background: linear-gradient(135deg, #206b4c, #329f7e, #f0a35e);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
-            display: inline-block;
+            letter-spacing: -0.3px;
         }
-        .title-badge {
-            background: #f1efdcb3;
+        .badge-pro {
+            background: #eef2e6;
+            padding: 6px 18px;
             border-radius: 80px;
-            padding: 6px 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #2b6e5c;
-            margin-left: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #2c7a5e;
         }
+
         .form-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            margin: 24px 0 16px;
+            gap: 16px;
+            margin: 20px 0 12px;
         }
         .form-group {
             flex: 1;
-            min-width: 170px;
+            min-width: 160px;
         }
         label {
             font-weight: 700;
             font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #3f7e6b;
-            display: block;
+            letter-spacing: 0.04em;
+            color: #498267;
             margin-bottom: 6px;
+            display: block;
         }
         input, select, textarea {
             width: 100%;
             padding: 12px 18px;
-            border-radius: 36px;
-            border: 1px solid #c8dfea;
+            border-radius: 44px;
+            border: 1px solid #d2e3ec;
             background: white;
             font-family: 'Inter';
-            transition: 0.2s;
+            transition: all 0.2s;
         }
         input:focus, select:focus, textarea:focus {
-            outline: none;
             border-color: #f4a261;
-            box-shadow: 0 0 0 3px rgba(244,162,97,0.2);
+            box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.2);
+            outline: none;
         }
+        textarea {
+            border-radius: 28px;
+        }
+
+        /* Domain bölmələri */
         .domain-area {
             background: white;
-            border-radius: 32px;
+            border-radius: 36px;
             margin-bottom: 28px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
             transition: all 0.2s;
-            border: 1px solid #f5e5d8;
+            border: 1px solid #fbebdb;
         }
         .domain-header {
-            background: #fffdf9;
-            padding: 16px 28px;
+            background: #fffbf6;
+            padding: 16px 26px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 32px 32px 28px 28px;
-            border-bottom: 1px solid #f5e2d0;
+            border-radius: 36px 36px 28px 28px;
+            border-bottom: 1px solid #f6e3d2;
         }
         .domain-title {
             font-weight: 700;
             font-size: 1.2rem;
-            color: #ca6f3a;
+            color: #c75e2c;
             display: flex;
             gap: 12px;
             align-items: center;
         }
         .domain-body {
-            padding: 8px 24px 20px 24px;
+            padding: 8px 20px 20px 24px;
         }
         .subskill-item {
-            padding: 14px 8px;
-            border-bottom: 1px solid #f9ede2;
+            padding: 14px 6px;
+            border-bottom: 1px solid #f7ede3;
         }
         .subskill-text {
             font-weight: 600;
             margin-bottom: 12px;
             font-size: 0.92rem;
-            color: #2f5e6e;
+            color: #2c6072;
         }
         .rating-buttons {
             display: flex;
@@ -131,213 +146,244 @@
             gap: 10px;
         }
         .rating-opt {
-            background: #f9fcff;
-            border: 1px solid #dde7ef;
-            border-radius: 60px;
-            padding: 6px 16px;
+            background: #fbfeff;
+            border: 1px solid #dde9f2;
+            border-radius: 50px;
+            padding: 6px 18px;
             font-size: 0.72rem;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.1s;
+            transition: 0.15s;
         }
         .rating-opt.selected {
             background: #2a9d8f;
-            border-color: #227e6e;
+            border-color: #1f786b;
             color: white;
+            box-shadow: 0 4px 8px rgba(42,157,143,0.2);
         }
         .not-obs.selected {
-            background: #e0a878;
-            border-color: #bc7842;
+            background: #e2a071;
+            border-color: #bc6e3c;
             color: white;
         }
         .action-bar {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             justify-content: flex-end;
             flex-wrap: wrap;
-            margin: 28px 0 20px;
+            margin: 20px 0 28px;
         }
         button {
             border: none;
-            padding: 12px 28px;
-            border-radius: 60px;
+            padding: 12px 26px;
+            border-radius: 50px;
             font-weight: 700;
             font-size: 0.85rem;
             cursor: pointer;
             background: white;
             transition: 0.15s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         button.primary {
-            background: linear-gradient(105deg, #2a9d8f, #238276);
+            background: linear-gradient(100deg, #2a9d8f, #217a69);
             color: white;
         }
         button.primary:hover {
             transform: translateY(-2px);
-            background: #217a6b;
+            background: #238276;
         }
         .archive-section {
             background: white;
-            border-radius: 36px;
-            padding: 20px 28px;
-            margin: 20px 0 30px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            border-radius: 40px;
+            padding: 20px 26px;
+            margin: 28px 0 25px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
         }
         .archive-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: #216e58;
-            margin-bottom: 16px;
+            color: #2d7a61;
             border-left: 5px solid #f4a261;
             padding-left: 18px;
+            margin-bottom: 18px;
         }
         .test-list {
-            max-height: 270px;
+            max-height: 280px;
             overflow-y: auto;
-            border: 1px solid #ecf0f3;
             border-radius: 28px;
         }
         .test-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 20px;
-            border-bottom: 1px solid #f0e9e2;
-        }
-        .test-info {
-            font-weight: 500;
-        }
-        .test-info i {
-            color: #f4a261;
-            width: 28px;
+            padding: 12px 18px;
+            border-bottom: 1px solid #f1e8df;
         }
         .view-test-btn {
-            background: #ecf3f0;
+            background: #ecf3ef;
             padding: 6px 20px;
-            border-radius: 60px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            border-radius: 40px;
+            font-size: 0.7rem;
         }
         .result-panel {
-            background: #fffef7;
+            background: #fffef9;
             border-radius: 48px;
-            padding: 34px;
+            padding: 32px;
             margin-top: 32px;
             display: none;
-            border: 1px solid #ffebd2;
-            box-shadow: 0 24px 40px -18px rgba(0,0,0,0.2);
+            border: 1px solid #ffecdb;
+            box-shadow: 0 24px 38px -16px rgba(0,0,0,0.1);
+            animation: fadeSlide 0.35s ease;
         }
         .result-panel.show {
             display: block;
-            animation: fadeUp 0.35s ease;
         }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(15px);}
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(18px);}
             to { opacity: 1; transform: translateY(0);}
+        }
+        .domain-score {
+            background: #fefaf2;
+            border-radius: 28px;
+            padding: 12px 20px;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        progress {
+            height: 8px;
+            border-radius: 16px;
+            flex: 1;
+        }
+        progress::-webkit-progress-value {
+            background: #2a9d8f;
+            border-radius: 16px;
         }
         footer {
             text-align: center;
-            margin-top: 55px;
-            padding: 18px;
+            margin-top: 48px;
+            padding: 20px 10px;
             font-size: 0.8rem;
-            color: #6b8b9e;
+            color: #6390a3;
         }
         .instagram-link {
-            color: #c13584;
+            color: #d34893;
             text-decoration: none;
             font-weight: 600;
+        }
+        @media (max-width: 700px) {
+            body { padding: 12px; }
+            .hero-card { padding: 18px; }
+            .domain-title { font-size: 1rem; }
+            .rating-opt { padding: 4px 14px; font-size: 0.65rem; }
+            .domain-header { padding: 12px 18px; }
+            .domain-body { padding: 6px 12px 12px 12px; }
+            .action-bar button { padding: 8px 16px; font-size: 0.75rem; }
         }
         @media print {
             .no-print, .action-bar, .archive-section, .rating-buttons, .collapse-icon, button {
                 display: none;
             }
-            .result-panel {
-                display: block;
-                background: white;
-                padding: 0;
-            }
-        }
-        progress {
-            height: 8px;
-            border-radius: 12px;
-            width: 60%;
-        }
-        .domain-score {
-            background: #fefaf0;
-            padding: 10px 18px;
-            border-radius: 40px;
-            margin: 10px 0;
+            .result-panel { display: block; background: white; padding: 0; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- başlıq -->
     <div class="hero-card no-print">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap:wrap;">
+        <div class="brand">
             <div>
-                <h1>🌱 İnkişaf İz<i class="fas fa-seedling"></i> </h1>
-                <span class="title-badge">peşəkar dəyərləndirmə şablonu</span>
+                <h1><i class="fas fa-seedling"></i> Erkən İnkişaf</h1>
+                <span class="badge-pro">peşəkar dəyərləndirmə şablonu</span>
             </div>
-            <div><i class="fas fa-child" style="font-size: 2.4rem; color:#f4a261;"></i></div>
+            <div><i class="fas fa-hand-holding-heart" style="font-size: 2.2rem; color:#f4a261;"></i></div>
         </div>
         <div class="form-row">
-            <div class="form-group"><label><i class="fas fa-user"></i> Uşağın adı</label><input type="text" id="childName" placeholder="Ayan"></div>
+            <div class="form-group"><label><i class="fas fa-user-circle"></i> Uşağın adı</label><input type="text" id="childName" placeholder="Ayan"></div>
             <div class="form-group"><label><i class="fas fa-user-tag"></i> Soyadı</label><input type="text" id="childSurname" placeholder="Məmmədova"></div>
             <div class="form-group"><label><i class="fas fa-calendar-alt"></i> Yaş (il/ay)</label><input type="text" id="childAge" placeholder="4 il 2 ay"></div>
-            <div class="form-group"><label><i class="fas fa-venus-mars"></i> Cins</label><select id="childGender"><option>Qız</option><option>Oğlan</option></select></div>
-            <div class="form-group"><label><i class="fas fa-microscope"></i> Mütəxəssis</label><input type="text" id="expert" placeholder="Pedaqoq/Psixoloq"></div>
+            <div class="form-group"><label><i class="fas fa-venus-mars"></i> Cins</label><select 
+
+id="childGender"><option>Qız</option><option>Oğlan</option></select></div>
+            <div class="form-group"><label><i class="fas fa-user-md"></i> Mütəxəssis</label><input type="text" id="expert" placeholder="Pedaqoq/Psixoloq"></div>
             <div class="form-group"><label><i class="fas fa-calendar-week"></i> Tarix</label><input type="date" id="evalDate"></div>
         </div>
-        <div class="form-group"><label><i class="fas fa-notes-medical"></i> Anamnez / Valideyn şikayəti</label><textarea rows="2" id="history" placeholder="Doğum, erkən inkişaf, əvvəlki dəstəklər..."></textarea></div>
+        <div class="form-group"><label><i class="fas fa-notes-medical"></i> Anamnez / Valideyn şikayəti</label><textarea rows="2" id="history" placeholder="Doğum, erkən 
+
+inkişaf, əvvəlki dəstəklər..."></textarea></div>
     </div>
 
-    <!-- suallar dinamik yüklənəcək -->
     <div id="domainsContainer"></div>
 
     <div class="action-bar no-print">
-        <button id="resetBtn" class="secondary"><i class="fas fa-trash-alt"></i> Sıfırla</button>
+        <button id="resetBtn" class="secondary"><i class="fas fa-eraser"></i> Sıfırla</button>
         <button id="reportBtn" class="primary"><i class="fas fa-file-alt"></i> Profil + Tövsiyələr</button>
         <button id="printBtn" class="secondary"><i class="fas fa-print"></i> Çap et</button>
     </div>
 
-    <!-- Arxiv bölməsi -->
-    <div class="archive-section no-print" id="archiveSection">
-        <div class="archive-title"><i class="fas fa-archive"></i> Keçirilmiş dəyərləndirmələr</div>
+    <!-- Keçirilmiş testlər arxivi -->
+    <div class="archive-section no-print">
+        <div class="archive-title"><i class="fas fa-box-archive"></i> Keçirilmiş dəyərləndirmələr</div>
         <div id="testArchiveList" class="test-list">
-            <!-- dinamik siyahı -->
+            <!-- dinamik -->
         </div>
-        <p style="font-size:0.7rem; margin-top:10px;"><i class="fas fa-info-circle"></i> Hər hesabat avtomatik arxivlənir. "Testə bax" ilə keçmiş cavabları yükləyin.</p>
+        <p style="font-size:0.7rem; margin-top:12px;"><i class="fas fa-info-circle"></i> Hər hesabat avtomatik arxivlənir. "Testə bax" ilə keçmiş cavabları yükləyin.</p>
     </div>
 
     <div id="resultPanel" class="result-panel"></div>
+
     <footer class="no-print">
-        <i class="fas fa-heart" style="color:#f4a261;"></i> peşəkar dəyərləndirmə platforması &nbsp;|&nbsp;
+        <i class="fas fa-heart" style="color:#f4a261;"></i> Dəyərləndirmə platforması &nbsp;|&nbsp;
         <a href="https://instagram.com/s_akhundoff" target="_blank" class="instagram-link"><i class="fab fa-instagram"></i> by s_akhundoff</a>
     </footer>
 </div>
 
 <script>
-    // ======================= 10 DOMAIN (DƏYİŞMƏYİB) =======================
+    // ======================= 10 DOMAIN (DƏYİŞMƏYİB, TAM SAXLANILIB) =======================
     const domains = [
-        { name: "🏃 Qabaq motor (ümumi hərəkət)", items: ["Baş nəzarəti oturaq vəziyyətdə", "Dayanma tarazlığı (ən az 10 saniyə)", "Pilləkənləri növbəli ayaqla çıxma", "Topu tutma və atma (2 m məsafə)", "Bir ayaq üstə dayanma (3-5 saniyə)", "Sıçrayış və tullanma (hər iki ayaqla)"] },
-        { name: "✍️ İncə motor (əl bacarığı)", items: ["Qələmi tripod tutuşla saxlama", "Xətt çəkmə (şaquli/üfüqi) nüsxəsi", "Muncuqları ipə düzmə (≥4 ədəd)", "Düymələri açıb bağlama", "Makasla sadə formaları kəsmə", "Kiçik leqo və ya bərkidiciləri birləşdirmə"] },
-        { name: "🗣 Reseptiv dil (anlama)", items: ["Sadə 1 addımlı əmrləri başa düşmə", "2 addımlı əmrləri yerinə yetirmə", "Əşyaları adına görə göstərmə (10+ şəkil)", "Sual sözlərini anlama (nə, harada, kim)", "Hekayəni dinləyərək suala cavab vermə", "Mürəkkəb təlimatlarla tapşırığı yerinə yetirmə"] },
-        { name: "💬 Ekspressiv dil (danışıq)", items: ["Səs çıxarma və fonasiya (yaşa uyğun)", "Ən az 20 aktiv söz işlətmə", "2-3 sözlü ifadələr qurma", "Gündəlik ehtiyaclarını sözlə ifadə (ac, susuz)", "Sadə hekayə danışma (3 cümlə)", "Suallara tam cümlə ilə cavab vermə"] },
-        { name: "🤝 Sosial-emosional", items: ["Gözkontakt qurma (tanış və yad mühitdə)", "Yaşıdı ilə növbəli oyun", "Duyğularını adlandırma (xoşbəxt, qəmli, qorxu)", "Başqasının duyğusunu tanıma (şəkil üzərində)", "Emosional tənzimləmə (qəzəb, məyusluq)", "Könüllü kömək və paylaşma"] },
-        { name: "🧼 Öz qulluq (gündəlik həyat)", items: ["Əl-üz yuma (sabun+qurutma)", "Diş fırçalama (köməksiz)", "Paltarı çıxarıb geyinmə (kömək lazımdırsa qismən)", "Ayaqqabı bağlama (velcro və ya sadə kaytan)", "Tualet ehtiyacının tək idarəsi", "Süfrə qurğularını (qaşıq, çəngəl, fincan) müstəqil istifadə"] },
-        { name: "🧠 Koqnitiv / idrak bacarıqları", items: ["Əsas rəngləri ayırd etmə (qırmızı, göy, sarı, yaşıl)", "Formaları tanıma (dairə, kvadrat, üçbucaq)", "Böyük-kiçik, uzun-qısa müqayisəsi", "5-7 dəqiqə diqqət cəmləmə (oyun və ya tapşırıqda)", "3 əşyanı 60 saniyə sonra xatırlama", "Sadə səbəb-nəticə əlaqəsi (düymə basanda işıq yanır)"] },
-        { name: "🎭 Oyun və təxəyyül", items: ["Funksional oyun (fincanla içmə təqlidi)", "Simvolik oyun (kubik = telefon)", "Sadə qaydalı oyuna qatılma (saklambac, loto)", "Təxəyyüllü hekayə qurma (kuklalarla səhnə)", "Müstəqil oyun (10 dəqiqə dayanmadan)", "Yetkin rəhbərliyi olmadan qrup oyunu"] },
-        { name: "🔊 Sensor prosessual (həssaslıq)", items: ["Müxtəlif teksturalı qidalara qarşı normal reaksiya", "Yüksək səslərdən həddindən artıq qorxmama", "Toxunma və qucaqlaşma qəbulu (yad adamdan çəkinmə normal)", "Sallanma/fırlanma hərəkətlərini tolerant qarşılama", "Qalabalıq mühitdə narahat olmama", "Əl-ayaq koordinasiyasında balans problemləri minimal"] },
-        { name: "🎯 Diqqət və davranış tənzimlənməsi", items: ["İstək təxirə salma (2 dəqiqə gözləyə bilmə)", "Fəaliyyət dəyişikliyinə asan adaptasiya", "Təlimatı eşidib dərhal başlama", "Oturaq işdə bədən nəzarəti (stulda oturma)", "Təkrarlanan hərəkətlərin (stereotiplərin) olmaması", "Hiperaktivlik/impulsivlik səviyyəsi – yaşa uyğun"] }
+        { name: "🏃 Qabaq motor (ümumi hərəkət)", items: ["Baş nəzarəti oturaq vəziyyətdə", "Dayanma tarazlığı (ən az 10 saniyə)", "Pilləkənləri növbəli ayaqla çıxma", "Topu 
+
+tutma və atma (2 m məsafə)", "Bir ayaq üstə dayanma (3-5 saniyə)", "Sıçrayış və tullanma (hər iki ayaqla)"] },
+        { name: "✍️ İncə motor (əl bacarığı)", items: ["Qələmi tripod tutuşla saxlama", "Xətt çəkmə (şaquli/üfüqi) nüsxəsi", "Muncuqları ipə düzmə (≥4 ədəd)", "Düymələri 
+
+açıb bağlama", "Makasla sadə formaları kəsmə", "Kiçik leqo və ya bərkidiciləri birləşdirmə"] },
+        { name: "🗣 Reseptiv dil (anlama)", items: ["Sadə 1 addımlı əmrləri başa düşmə", "2 addımlı əmrləri yerinə yetirmə", "Əşyaları adına görə göstərmə (10+ şəkil)", 
+
+"Sual sözlərini anlama (nə, harada, kim)", "Hekayəni dinləyərək suala cavab vermə", "Mürəkkəb təlimatlarla tapşırığı yerinə yetirmə"] },
+        { name: "💬 Ekspressiv dil (danışıq)", items: ["Səs çıxarma və fonasiya (yaşa uyğun)", "Ən az 20 aktiv söz işlətmə", "2-3 sözlü ifadələr qurma", "Gündəlik 
+
+ehtiyaclarını sözlə ifadə (ac, susuz)", "Sadə hekayə danışma (3 cümlə)", "Suallara tam cümlə ilə cavab vermə"] },
+        { name: "🤝 Sosial-emosional", items: ["Gözkontakt qurma (tanış və yad mühitdə)", "Yaşıdı ilə növbəli oyun", "Duyğularını adlandırma (xoşbəxt, qəmli, qorxu)", 
+
+"Başqasının duyğusunu tanıma (şəkil üzərində)", "Emosional tənzimləmə (qəzəb, məyusluq)", "Könüllü kömək və paylaşma"] },
+        { name: "🧼 Öz qulluq (gündəlik həyat)", items: ["Əl-üz yuma (sabun+qurutma)", "Diş fırçalama (köməksiz)", "Paltarı çıxarıb geyinmə (kömək lazımdırsa qismən)", 
+
+"Ayaqqabı bağlama (velcro və ya sadə kaytan)", "Tualet ehtiyacının tək idarəsi", "Süfrə qurğularını (qaşıq, çəngəl, fincan) müstəqil istifadə"] },
+        { name: "🧠 Koqnitiv / idrak bacarıqları", items: ["Əsas rəngləri ayırd etmə (qırmızı, göy, sarı, yaşıl)", "Formaları tanıma (dairə, kvadrat, üçbucaq)", "Böyük-
+
+kiçik, uzun-qısa müqayisəsi", "5-7 dəqiqə diqqət cəmləmə (oyun və ya tapşırıqda)", "3 əşyanı 60 saniyə sonra xatırlama", "Sadə səbəb-nəticə əlaqəsi (düymə basanda işıq 
+
+yanır)"] },
+        { name: "🎭 Oyun və təxəyyül", items: ["Funksional oyun (fincanla içmə təqlidi)", "Simvolik oyun (kubik = telefon)", "Sadə qaydalı oyuna qatılma (saklambac, 
+
+loto)", "Təxəyyüllü hekayə qurma (kuklalarla səhnə)", "Müstəqil oyun (10 dəqiqə dayanmadan)", "Yetkin rəhbərliyi olmadan qrup oyunu"] },
+        { name: "🔊 Sensor prosessual (həssaslıq)", items: ["Müxtəlif teksturalı qidalara qarşı normal reaksiya", "Yüksək səslərdən həddindən artıq qorxmama", "Toxunma və 
+
+qucaqlaşma qəbulu (yad adamdan çəkinmə normal)", "Sallanma/fırlanma hərəkətlərini tolerant qarşılama", "Qalabalıq mühitdə narahat olmama", "Əl-ayaq koordinasiyasında 
+
+balans problemləri minimal"] },
+        { name: "🎯 Diqqət və davranış tənzimlənməsi", items: ["İstək təxirə salma (2 dəqiqə gözləyə bilmə)", "Fəaliyyət dəyişikliyinə asan adaptasiya", "Təlimatı eşidib dərhal 
+
+başlama", "Oturaq işdə bədən nəzarəti (stulda oturma)", "Təkrarlanan hərəkətlərin (stereotiplərin) olmaması", "Hiperaktivlik/impulsivlik səviyyəsi – yaşa uyğun"] }
     ];
 
     let answers = Array(domains.length).fill().map(() => Array(domains[0].items.length).fill(null));
     let optButtons = [];
-
-    // Arxiv: testlərin saxlanması
     let testArchive = [];
 
+    // -------------- Arxiv funksiyaları -----------------
     function loadArchiveFromLocal() {
         const saved = localStorage.getItem('rehab_test_archive');
         if(saved) testArchive = JSON.parse(saved);
@@ -350,27 +396,24 @@
     function addCurrentTestToArchive() {
         const childName = document.getElementById('childName').value.trim();
         const childSurname = document.getElementById('childSurname').value.trim();
-        const date = document.getElementById('evalDate').value || new Date().toISOString().slice(0,10);
-        if(!childName && !childSurname) {
-            alert("Arxiv üçün uşağın adını daxil edin.");
-            return false;
-        }
+        if(!childName && !childSurname) return false;
         const fullName = `${childName} ${childSurname}`.trim();
         const archiveItem = {
             id: Date.now(),
             name: fullName,
             surname: childSurname,
-            date: date,
-            answers: JSON.parse(JSON.stringify(answers)), // dərin kopya
+            date: document.getElementById('evalDate').value || new Date().toISOString().slice(0,10),
+            answers: JSON.parse(JSON.stringify(answers)),
             meta: {
-                childName, childSurname, childAge: document.getElementById('childAge').value,
+                childName, childSurname,
+                childAge: document.getElementById('childAge').value,
                 childGender: document.getElementById('childGender').value,
                 expert: document.getElementById('expert').value,
-                evalDate: date,
+                evalDate: document.getElementById('evalDate').value,
                 history: document.getElementById('history').value
             }
         };
-        testArchive.unshift(archiveItem); // ən yenisi başda
+        testArchive.unshift(archiveItem);
         if(testArchive.length > 30) testArchive.pop();
         saveArchiveToLocal();
         return true;
@@ -379,7 +422,7 @@
         const container = document.getElementById('testArchiveList');
         if(!container) return;
         if(testArchive.length === 0) {
-            container.innerHTML = '<div style="padding:20px; text-align:center; color:#8ba9bb;">Hələ heç bir dəyərləndirmə arxivlənməyib.</div>';
+            container.innerHTML = '<div style="padding:20px; text-align:center; color:#7fa3b5;">📭 Hələ heç bir dəyərləndirmə arxivlənməyib.</div>';
             return;
         }
         container.innerHTML = '';
@@ -448,7 +491,7 @@
         }
     }
 
-    // Render suallar (əvvəlki stabil mexanizm)
+    // ---------- UI rendering (əvvəlki stabil mexanika) ----------
     function renderDomains() {
         const container = document.getElementById('domainsContainer');
         container.innerHTML = '';
@@ -458,7 +501,7 @@
             section.className = 'domain-area';
             const header = document.createElement('div');
             header.className = 'domain-header';
-            header.innerHTML = `<div class="domain-title">${domain.name}</div><div class="collapse-icon no-print">▼</div>`;
+            header.innerHTML = `<div class="domain-title"><i class="fas fa-chalkboard"></i> ${domain.name}</div><div class="collapse-icon no-print">▼</div>`;
             const body = document.createElement('div');
             body.className = 'domain-body';
             section.appendChild(header); section.appendChild(body);
@@ -470,10 +513,10 @@
                 body.appendChild(itemDiv);
                 const btnContainer = itemDiv.querySelector('.rating-buttons');
                 const btns = [];
-                for(let v=0;v<=4;v++) {
+                for(let v=0; v<=4; v++) {
                     const btn = document.createElement('div');
                     btn.className = 'rating-opt';
-                    let label = v===0?'0 - bacarmır':v===1?'1 - minimal kömək':v===2?'2 - qismən':v===3?'3 - yaxın monitorinq':'4 - yaşa uyğun';
+                    let label = v===0 ? '0 - bacarmır' : (v===1 ? '1 - minimal kömək' : (v===2 ? '2 - qismən' : (v===3 ? '3 - yaxın monitorinq' : '4 - yaşa uyğun')));
                     btn.textContent = label;
                     btn.dataset.val = v;
                     btn.addEventListener('click', (e) => { e.stopPropagation(); setAnswer(dIdx,iIdx,v); });
@@ -481,7 +524,7 @@
                 }
                 const notBtn = document.createElement('div');
                 notBtn.className = 'rating-opt not-obs';
-                notBtn.textContent = '🚫 Müşahidə yox';
+                notBtn.textContent = '🚫 Müşahidə olunmayıb';
                 notBtn.addEventListener('click', (e) => { e.stopPropagation(); setAnswer(dIdx,iIdx,null); });
                 btnContainer.appendChild(notBtn); btns.push(notBtn);
                 if(!optButtons[dIdx]) optButtons[dIdx] = [];
@@ -507,50 +550,52 @@
                 if(current !== null && parseInt(btnVal) === current) btn.classList.add('selected');
                 else btn.classList.remove('selected');
             } else {
-                if(current === null) btn.classList.add('selected'); else btn.classList.remove('selected');
+                if(current === null) btn.classList.add('selected');
+                else btn.classList.remove('selected');
             }
         });
     }
     function resetAll() {
-        if(!confirm('Təmizlənsin? Bütün cavablar silinəcək.')) return;
+        if(!confirm('Bütün cavablar silinsin?')) return;
         answers = Array(domains.length).fill().map(() => Array(domains[0].items.length).fill(null));
-        for(let d=0;d<domains.length;d++) for(let i=0;i<domains[d].items.length;i++) updateButtonStyles(d,i);
-        document.getElementById('childName').value = '';
-        document.getElementById('childSurname').value = '';
-        document.getElementById('childAge').value = '';
-        document.getElementById('childGender').value = 'Qız';
-        document.getElementById('expert').value = '';
-        document.getElementById('evalDate').value = '';
+        for(let d=0; d<domains.length; d++) for(let i=0; i<domains[d].items.length; i++) updateButtonStyles(d,i);
+        document.getElementById('childName').value = ''; document.getElementById('childSurname').value = '';
+        document.getElementById('childAge').value = ''; document.getElementById('childGender').value = 'Qız';
+        document.getElementById('expert').value = ''; document.getElementById('evalDate').value = '';
         document.getElementById('history').value = '';
         saveCurrentToLocal();
         document.getElementById('resultPanel').classList.remove('show');
     }
 
-    // HESABAT – GENİŞ VALİDEYN TÖVSİYƏLƏRİ VƏ PEŞƏKAR QİYMƏTLƏNDİRMƏ
-    function getExpandedParentAdvice(level, overallPercent) {
+    // ---------- GENİŞ VALİDEYN TÖVSİYƏLƏRİ (ətraflı) ----------
+    function getExpandedParentAdvice(overallPercent) {
         if(overallPercent < 35) {
-            return `<div style="background:#ffefef; padding:22px; border-radius:32px;"><h4><i class="fas fa-exclamation-triangle"></i> Yüksək dəstək ehtiyacı – təcili reabilitasiya proqramı</h4>
-            <ul><li><i class="fas fa-clinic-medical"></i> Dərhal reabilitasiya mərkəzində hərtərəfli dəyərləndirmə və fərdi təhsil planı (FTP) alın.</li>
+            return `<div style="background:#fee9e6; padding:22px; border-radius:36px; margin:15px 0;">
+            <h4><i class="fas fa-exclamation-triangle"></i> Yüksək dəstək ehtiyacı – təcili reabilitasiya proqramı</h4>
+            <ul><li><i class="fas fa-clinic-medical"></i> Dərhal reabilitasiya mərkəzində tam dəyərləndirmə və fərdi təhsil planı (FTP) alın.</li>
             <li><i class="fas fa-home"></i> Evdə gündəlik 30 dəqiqə strukturlaşdırılmış fəaliyyət: incə motor üçün plastilin, dil üçün şəkil kartları.</li>
-            <li><i class="fas fa-chalkboard-teacher"></i> Vizual cədvəl və “əvvəl – sonra” lövhəsi istifadə edin. Hər kiçik uğuru dərhal tərifləyin.</li>
+            <li><i class="fas fa-chalkboard-user"></i> Vizual cədvəl, "əvvəl – sonra" lövhəsi istifadə edin. Hər kiçik uğuru dərhal tərifləyin.</li>
             <li><i class="fas fa-heartbeat"></i> Valideyn olaraq psixoloji dəstək alın, stress idarəsi üsullarını öyrənin.</li>
             <li><i class="fas fa-calendar-week"></i> Həftədə ən az 3 gün peşəkar terapiya (dil, əmək, sensor inteqrasiya) tövsiyə olunur.</li></ul></div>`;
         } else if(overallPercent < 55) {
-            return `<div style="background:#fff2e0; padding:22px; border-radius:32px;"><h4><i class="fas fa-chart-line"></i> Orta dəstək – məqsədli müdaxilə proqramı</h4>
+            return `<div style="background:#fff3e4; padding:22px; border-radius:36px;">
+            <h4><i class="fas fa-chart-line"></i> Orta dəstək – məqsədli müdaxilə proqramı</h4>
             <ul><li><i class="fas fa-hand-holding-heart"></i> Reabilitasiya mərkəzində həftədə 1-2 dəfə terapiya (zəif sahələrə yönəlmiş).</li>
             <li><i class="fas fa-puzzle-piece"></i> Evdə hər gün 15 dəqiqə oyun terapiyası: leqo, yapışqanlı boncuklar, sosial hekayələr.</li>
             <li><i class="fas fa-smile"></i> Müsbət davranış dəstəyi: istənilən davranışdan sonra dərhal mükafat (etikalar, sevimli oyuncaq).</li>
             <li><i class="fas fa-users"></i> Yaşıd qrup oyunlarına cəlb edin (rəsm, musiqi, nağıl saatı).</li>
             <li><i class="fas fa-chart-simple"></i> 3 aydan sonra təkrar dəyərləndirmə aparın.</li></ul></div>`;
         } else if(overallPercent < 75) {
-            return `<div style="background:#fef8e8; padding:22px; border-radius:32px;"><h4><i class="fas fa-leaf"></i> Yüngül çətinlik – gücləndirici ev mühiti</h4>
+            return `<div style="background:#fff8e8; padding:22px; border-radius:36px;">
+            <h4><i class="fas fa-leaf"></i> Yüngül çətinlik – gücləndirici ev mühiti</h4>
             <ul><li><i class="fas fa-book-open"></i> Hər axşam birlikdə kitab oxuyun, şəkillər haqqında sual-cavab edin.</li>
             <li><i class="fas fa-dice"></i> Həftədə 3 dəfə “rol oyunları”: alverçi, doktor, məktəb – sosial bacarıqları artırır.</li>
             <li><i class="fas fa-paintbrush"></i> İncə motor üçün mozaika, rəngləmə, barmaq boyaları.</li>
             <li><i class="fas fa-tree"></i> Təbiət gəzintiləri, idman fəaliyyətləri (velosiped, üzgüçülük) koqnitiv inkişafı dəstəkləyir.</li>
             <li><i class="fas fa-calendar-check"></i> 6 ay sonra təkrar dəyərləndirmə planlaşdırın.</li></ul></div>`;
         } else {
-            return `<div style="background:#e0f5ee; padding:22px; border-radius:32px;"><h4><i class="fas fa-star-of-life"></i> Yaş normasına uyğun – dəstəkləyici mühit</h4>
+            return `<div style="background:#e0f5ee; padding:22px; border-radius:36px;">
+            <h4><i class="fas fa-star-of-life"></i> Yaş normasına uyğun – dəstəkləyici mühit</h4>
             <ul><li><i class="fas fa-music"></i> Müxtəlif stimullar: musiqi, rəsm, idman, eksperimentlər.</li>
             <li><i class="fas fa-comments"></i> Açıq uclu suallar verin, uşağın fikirlərini dinləyin və genişləndirin.</li>
             <li><i class="fas fa-hand-peace"></i> Sosial bacarıqlar üçün qrup fəaliyyətləri (bağça, klub).</li>
@@ -566,43 +611,53 @@
         const age = document.getElementById('childAge').value || '?';
         const expert = document.getElementById('expert').value || 'Mütəxəssis';
         const date = document.getElementById('evalDate').value || new Date().toLocaleDateString();
-        const anamnez = document.getElementById('history').value || 'Məlumat yoxdur.';
+        const anamnez = document.getElementById('history').value || 'Məlumat daxil edilməyib.';
 
         let domainStats = [];
-        for(let d=0;d<domains.length;d++) {
+        for(let d=0; d<domains.length; d++) {
             let sum=0, count=0;
-            for(let i=0;i<domains[d].items.length;i++) {
+            for(let i=0; i<domains[d].items.length; i++) {
                 if(answers[d][i] !== null) { sum+=answers[d][i]; count++; }
             }
             let percent = count===0 ? null : (sum/(count*4))*100;
-            let risk = percent===null ? '—' : (percent<30?'🔴 Yüksək risk':(percent<55?'🟠 Orta risk':(percent<75?'🟡 Yüngül çətinlik':'🟢 Yaş norması')));
+            let risk = percent===null ? '—' : (percent<30 ? '🔴 Yüksək risk' : (percent<55 ? '🟠 Orta risk' : (percent<75 ? '🟡 Yüngül çətinlik' : '🟢 Yaş norması')));
             domainStats.push({ name:domains[d].name, percent, risk });
         }
-        const validPerc = domainStats.filter(s=>s.percent!==null).map(s=>s.percent);
-        const overall = validPerc.length ? validPerc.reduce((a,b)=>a+b,0)/validPerc.length : 0;
-        // Peşəkar qiymətləndirmə hissəsi
+        const valid = domainStats.filter(s=>s.percent!==null).map(s=>s.percent);
+        const overall = valid.length ? valid.reduce((a,b)=>a+b,0)/valid.length : 0;
         const strengths = domainStats.filter(s=>s.percent!==null && s.percent>=70).map(s=>s.name.split(' ')[0]).join(', ');
         const weaknesses = domainStats.filter(s=>s.percent!==null && s.percent<45).map(s=>s.name.split(' ')[0]).join(', ');
+        
         const clinicalEval = `
-            <div style="background:#faf4e8; border-radius:32px; padding:18px; margin:20px 0;">
+            <div style="background:#f4f0e8; border-radius:32px; padding:20px; margin:20px 0;">
             <h3><i class="fas fa-stethoscope"></i> Klinik qiymətləndirmə (Uşaq psixoloqu rəyi)</h3>
             <p><strong>📈 Ümumi inkişaf indeksi:</strong> ${overall.toFixed(1)}%</p>
-            <p><strong>✅ Güclü tərəflər:</strong> ${strengths || "müəyyən edilməyib"} </p>
+            <p><strong>✅ Güclü tərəflər:</strong> ${strengths || "müəyyən edilməyib"}</p>
             <p><strong>⚠️ İnkişaf etdirilməli sahələr:</strong> ${weaknesses || "hamısı yaş normasına yaxın"}</p>
-            <p><strong>🎯 Priorit tədbirlər:</strong> ${overall<45 ? "Təcili müdaxilə planı, həftədə ən az 3 seans terapiya." : (overall<70 ? "Hədəflənmiş terapiya (zəif sahələrə yönəlmiş)" : "Ev proqramı ilə gücləndirmə və monitorinq")}</p>
-            <p><strong>🧩 Tövsiyə olunan terapiya növləri:</strong> ${overall<55 ? "Dil terapiyası, əmək terapiyası, sensor inteqrasiya" : "Oyun terapiyası, ailə məsləhəti"}</p>
+            <p><strong>🎯 Prioritet tədbirlər:</strong> ${overall<45 ? "Təcili müdaxilə planı, həftədə ən az 3 seans terapiya." : (overall<70 ? "Hədəflənmiş terapiya (zəif 
+
+sahələrə yönəlmiş)" : "Ev proqramı ilə gücləndirmə və monitorinq")}</p>
+            <p><strong>🧩 Tövsiyə olunan terapiya növləri:</strong> ${overall<55 ? "Dil terapiyası, əmək terapiyası, sensor inteqrasiya" : "Oyun terapiyası, ailə 
+
+məsləhəti"}</p>
             </div>
         `;
 
-        const parentAdvice = getExpandedParentAdvice(overall, overall);
         let scoresHtml = '';
         domainStats.forEach(s => {
-            scoresHtml += `<div class="domain-score"><strong>${s.name}</strong> ${s.percent!==null ? s.percent.toFixed(1)+'%' : '—'} ${s.risk}<progress value="${s.percent||0}" max="100"></progress></div>`;
+            scoresHtml += `<div class="domain-score"><strong>${s.name}</strong> ${s.percent!==null ? s.percent.toFixed(1)+'%' : '—'} ${s.risk}<progress 
+
+value="${s.percent||0}" max="100"></progress></div>`;
         });
+        const parentAdvice = getExpandedParentAdvice(overall);
         const html = `
-            <div class="no-print" style="margin-bottom:18px;"><button onclick="window.print()" style="background:#e98a3e; color:white;"><i class="fas fa-print"></i> Hesabatı çap et</button></div>
+            <div class="no-print" style="margin-bottom:18px;"><button onclick="window.print()" style="background:#d97a2e; color:white;"><i class="fas fa-print"></i> 
+
+Hesabatı çap et</button></div>
             <h2><i class="fas fa-clipboard-list"></i> Fərdi İnkişaf Profili</h2>
-            <p><strong>Uşaq:</strong> ${fullName} &nbsp;| <strong>Yaş:</strong> ${age} &nbsp;| <strong>Mütəxəssis:</strong> ${expert} &nbsp;| <strong>Tarix:</strong> ${date}</p>
+            <p><strong>Uşaq:</strong> ${fullName} &nbsp;| <strong>Yaş:</strong> ${age} &nbsp;| <strong>Mütəxəssis:</strong> ${expert} &nbsp;| <strong>Tarix:</strong> 
+
+${date}</p>
             ${clinicalEval}
             <h3><i class="fas fa-chart-simple"></i> Sahə profili</h3>
             ${scoresHtml}
@@ -616,13 +671,12 @@
         document.getElementById('resultPanel').innerHTML = html;
         document.getElementById('resultPanel').classList.add('show');
         window.scrollTo({ top: document.getElementById('resultPanel').offsetTop-20, behavior: 'smooth' });
-        // arxivə əlavə et
         addCurrentTestToArchive();
     }
 
     function printReport() { window.print(); }
 
-    // inits
+    // init
     renderDomains();
     loadArchiveFromLocal();
     loadCurrentFromLocal();
