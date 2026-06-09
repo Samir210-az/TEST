@@ -401,11 +401,11 @@
 
     <!-- Keçirilmiş testlər arxivi -->
     <div class="archive-section no-print">
-        <div class="archive-title"><i class="fas fa-box-archive"></i> Keçirilmiş dəyərləndirmələr</div>
+        <div class="archive-title"><i class="fas fa-box-archive"></i> Keçirilmiş testlər</div>
         <div id="testArchiveList" class="test-list">
             <div style="padding:20px; text-align:center; color:#7fa3b5;"><i class="fas fa-spinner fa-pulse"></i> Yüklənir...</div>
         </div>
-        <p style="font-size:0.7rem; margin-top:12px;"><i class="fas fa-info-circle"></i> Hər hesabat avtomatik arxivlənir. "Testə bax" ilə keçmiş cavabları yükləyin.</p>
+        <p style="font-size:0.7rem; margin-top:12px;"><i class="fas fa-info-circle"></i> Bütün pasientlərlə keçirilən testlər burada saxlanılır. "Testə bax" düyməsi həmin testin nəticəsini ayrıca səhifədə HTML olaraq açır və yükləməyə imkan verir.</p>
     </div>
 
     <div id="resultPanel" class="result-panel"></div>
@@ -490,7 +490,7 @@
             btn.addEventListener('click', (e) => {
                 const id = parseInt(btn.dataset.id);
                 const found = testArchive.find(t => t.id === id);
-                if(found) loadArchivedTest(found);
+                if(found) openArchivedReport(found);
             });
         });
     }
@@ -783,6 +783,112 @@
         a.click();
         document.body.removeChild(a);
         setTimeout(function(){ URL.revokeObjectURL(url); }, 1500);
+    }
+
+    // Hesabatın daxili HTML-ni qurur — generateReport ilə EYNİ hesablama və şablon (nəticələr dəyişmir)
+    function buildReportInner(ans, meta) {
+        const child = meta.childCode || 'Uşaq';
+        const age = meta.childAge || '?';
+        const expert = meta.expert || 'Mütəxəssis';
+        const date = meta.evalDate || new Date().toLocaleDateString();
+        const anamnez = meta.history || 'Məlumat daxil edilməyib.';
+
+        let domainStats = [];
+        for(let d=0; d<domains.length; d++) {
+            let sum=0, count=0;
+            for(let i=0; i<domains[d].items.length; i++) {
+                if(ans[d] && ans[d][i] !== null && ans[d][i] !== undefined) {
+                    sum += ans[d][i];
+                    count++;
+                }
+            }
+            let percent = count === 0 ? null : (sum / (count * 4)) * 100;
+            let riskLevel = '';
+            if(percent === null) riskLevel = 'Məlumat yoxdur';
+            else if(percent < 30) riskLevel = '🔴 Yüksək risk';
+            else if(percent < 55) riskLevel = '🟠 Orta risk';
+            else if(percent < 75) riskLevel = '🟡 Minimal risk';
+            else riskLevel = '🟢 Yaş norması';
+            domainStats.push({ name: domains[d].name, percent, riskLevel });
+        }
+
+        const totalPercentArr = domainStats.filter(s => s.percent !== null).map(s => s.percent);
+        const overall = totalPercentArr.length ? totalPercentArr.reduce((a,b)=>a+b,0)/totalPercentArr.length : 0;
+        const strengths = domainStats.filter(s=>s.percent!==null && s.percent>=70).map(s=>s.name.split(' ')[0]).join(', ');
+        const weaknesses = domainStats.filter(s=>s.percent!==null && s.percent<45).map(s=>s.name.split(' ')[0]).join(', ');
+
+        const clinicalEval = `
+            <div style="background:#f4f0e8; border-radius:32px; padding:20px; margin:20px 0;">
+            <h3><i class="fas fa-stethoscope"></i> Klinik qiymətləndirmə</h3>
+            <p><strong>📈 Ümumi inkişaf indeksi:</strong> ${overall.toFixed(1)}%</p>
+            <p><strong>✅ Güclü tərəflər:</strong> ${strengths || "müəyyən edilməyib"}</p>
+            <p><strong>⚠️ İnkişaf etdirilməli sahələr:</strong> ${weaknesses || "hamısı yaş normasına yaxın"}</p>
+            <p><strong>🎯 Prioritet tədbirlər:</strong> ${overall<45 ? "Təcili müdaxilə planı, həftədə ən az 3 seans terapiya." : (overall<70 ? "Hədəflənmiş terapiya (zəif sahələrə yönəlmiş)" : "Ev proqramı ilə gücləndirmə və monitorinq")}</p>
+            </div>
+        `;
+        const parentAdvice = getExpandedParentAdvice(overall);
+        const highRiskDomains = domainStats.filter(s => s.percent !== null && s.percent < 40).map(s => s.name);
+        let detailedAdvice = '';
+        if(highRiskDomains.length) detailedAdvice = `<p><strong><i class="fas fa-bell"></i> Ən çox dəstək tələb edən sahələr:</strong> ${highRiskDomains.join(', ')}. Reabilitasiya mərkəzində məqsədli terapiya başlanmalıdır.</p>`;
+        else detailedAdvice = '<p>Bütün sahələr monitorinq səviyyəsindədir. Ev proqramı kifayətdir.</p>';
+
+        return `
+            <h2><i class="fas fa-chart-simple"></i> Fərdi İnkişaf Profili</h2>
+            <p><strong>Uşaq:</strong> ${child} &nbsp;| <strong>Yaş:</strong> ${age} &nbsp;| <strong>Mütəxəssis:</strong> ${expert} &nbsp;| <strong>Tarix:</strong> ${date}</p>
+            ${clinicalEval}
+            <h3><i class="fas fa-chart-simple"></i> Sahə profili</h3>
+            ${domainStats.map(s => `<div style="margin:8px 0"><strong>${s.name}</strong> ${s.percent !== null ? s.percent.toFixed(1)+'%' : '—'} ${s.riskLevel}<progress value="${s.percent || 0}" max="100" style="width:60%; height:10px; border-radius:10px;"></progress></div>`).join('')}
+            <h3><i class="fas fa-lightbulb"></i> Klinik şərh</h3>
+            ${detailedAdvice}
+            <h3><i class="fas fa-hands-helping"></i> Valideynlər üçün ətraflı rəhbərlik</h3>
+            ${parentAdvice}
+            <h3><i class="fas fa-history"></i> Anamnez / Valideyn şikayəti</h3>
+            <p>${anamnez}</p>
+            <p style="margin-top:28px;"><strong>Mütəxəssis imzası:</strong> ______________________ (${expert})</p>
+            <p style="font-size:0.7rem;">Bu hesabat reabilitasiya mərkəzlərinə istiqamətləndirmə məqsədi daşıyır, diaqnoz qoymur.</p>
+        `;
+    }
+
+    // Müstəqil HTML sənədi qurur (endirilən fayl ilə eyni stil)
+    function buildStandaloneReportDoc(innerHtml, childName, withDownloadButton) {
+        const head = '<!DOCTYPE html>\n<html lang="az"><head><meta charset="UTF-8">'
+            + '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
+            + '<title>Fərdi İnkişaf Profili — ' + childName + '</title>'
+            + '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">'
+            + '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">'
+            + '<style>'
+            + 'body{font-family:\'Inter\',system-ui,sans-serif;background:#fefcf7;color:#22404f;max-width:820px;margin:0 auto;padding:32px 22px;line-height:1.6;}'
+            + 'h2{color:#d67a2c;border-bottom:2px solid #f0e2cf;padding-bottom:10px;}'
+            + 'h3{color:#1c6b54;margin-top:26px;}'
+            + 'p{margin:8px 0;}'
+            + 'progress{vertical-align:middle;margin-left:8px;height:10px;border-radius:10px;}'
+            + 'progress::-webkit-progress-bar{background:#f0e8dc;border-radius:10px;}'
+            + 'progress::-webkit-progress-value{background:#e67e22;border-radius:10px;}'
+            + '.dlbar{margin-bottom:18px;}'
+            + '.dlbar button{background:#e67e22;color:#fff;border:none;padding:11px 18px;border-radius:12px;font-family:inherit;font-size:14px;cursor:pointer;}'
+            + 'footer{margin-top:36px;padding-top:16px;border-top:1px solid #eee;text-align:center;font-size:.8rem;color:#8a97ad;}'
+            + 'footer a{color:#e67e22;text-decoration:none;}'
+            + '</style></head><body>';
+        const footer = '<footer>By <a href="https://instagram.com/s_akhundoff" target="_blank" rel="noopener">s_akhundoff</a></footer>';
+        const cleanDoc = head + '<div id="report">' + innerHtml + '</div>' + footer + '</body></html>';
+        if(!withDownloadButton) return cleanDoc;
+        const fname = 'Inkisaf_Profili_' + childName.replace(/[^0-9A-Za-zƏəİıÖöÜüÇçŞşĞğ]+/g,'_') + '.html';
+        const dlScript = '<scr'+'ipt>function dl(){var s=' + JSON.stringify(cleanDoc) + ';var b=new Blob([s],{type:"text/html;charset=utf-8"});var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download=' + JSON.stringify(fname) + ';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(u);},1500);}</scr'+'ipt>';
+        return head
+            + '<div class="dlbar"><button onclick="dl()"><i class="fas fa-download"></i> HTML olaraq yüklə</button></div>'
+            + '<div id="report">' + innerHtml + '</div>' + footer + dlScript + '</body></html>';
+    }
+
+    // Arxivdəki testin nəticəsini ayrıca səhifədə (HTML) açır
+    function openArchivedReport(test) {
+        const inner = buildReportInner(test.answers || [], test.meta || {});
+        const childName = test.name || (test.meta && test.meta.childCode) || 'Hesabat';
+        const doc = buildStandaloneReportDoc(inner, childName, true);
+        const blob = new Blob([doc], {type:'text/html;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        const w = window.open(url, '_blank');
+        if(!w) alert('Pop-up bloklandı. Zəhmət olmasa bu sayt üçün pop-up-a icazə verin.');
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 60000);
     }
 
     // İNİT
