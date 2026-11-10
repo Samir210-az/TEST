@@ -51,7 +51,8 @@
   function setSession(s){ localStorage.setItem(SESSION_KEY, JSON.stringify(s)); }
   function clearSession(){ localStorage.removeItem(SESSION_KEY); }
 
-  var approved=false;
+  var approved=false, adminMode=false;
+  var ADMIN_EMAIL='samir.akhundoff@gmail.com';
   function isVerified(){ return approved; }
 
   var activeWatchKey=null;
@@ -229,6 +230,13 @@
   function renderWidget(){
     var el=document.getElementById('anpAccWidget');
     if(!el) return;
+    if(adminMode){
+      el.innerHTML='<div class="anp-acc-chip">🛡️ Admin <button class="anp-acc-logout" id="anpLogoutBtn">Çıxış</button></div>';
+      document.getElementById('anpLogoutBtn').onclick=function(){
+        if(confirm('Admin hesabından çıxmaq istəyirsiniz?')) firebase.auth().signOut().then(function(){ location.reload(); });
+      };
+      return;
+    }
     var s=getSession();
     if(!s){
       el.innerHTML='<button class="anp-acc-btn" id="anpAccBtn">👤 Hesabım</button>';
@@ -247,6 +255,14 @@
   document.addEventListener('DOMContentLoaded', function(){
     buildWidget();
     renderWidget();
+    // Admin panelindən Google ilə daxil olan admin bu səkmədə testlərdən təsdiqsiz istifadə edə bilir.
+    ensureFirebase().then(function(){
+      var u=firebase.auth().currentUser;
+      if(u && !u.isAnonymous && u.email===ADMIN_EMAIL && u.emailVerified){
+        adminMode=true; approved=true; closeModal(); renderWidget();
+        if(typeof pendingCb==='function'){ var cb=pendingCb; pendingCb=null; cb(); }
+      }
+    });
   });
 
   /* Konteynerdə ilk klikə qədər gözləyir, sonra qeydiyyat/aktivləşdirmə tələb edir.
