@@ -32,6 +32,8 @@ body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:var(--paper);co
 .rc-btn.wa{background:#faf0dd;color:var(--gold-2)}
 .empty-note{text-align:center;padding:40px;color:var(--ink-2)}
 h2{margin:0}
+.back-link{background:var(--teal);color:#fff;text-decoration:none;border-radius:10px;padding:10px 16px;font-size:.88rem;font-weight:700}
+.out-btn{border:0;cursor:pointer;font-family:inherit;background:#555}
 </style>
 </head><body>
 
@@ -50,6 +52,7 @@ h2{margin:0}
       <span class="admin-count" id="regActiveCount" style="background:var(--teal)">0 aktiv</span>
       <span class="admin-count" id="regPendingCount" style="background:#b34242">0 gözləyir</span>
     </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><a href="index.html" class="back-link">← Sayta qayıt</a><button type="button" class="back-link out-btn" id="adminLogout">Çıxış</button></div>
     <input id="adminSearch" type="text" placeholder="Ad, iş yeri və ya nömrə axtar..." oninput="renderTable()">
   </div>
   <div class="reg-grid" id="regBody"></div>
@@ -94,11 +97,23 @@ document.getElementById('googleLogin').addEventListener('click', async ()=>{
     await persistReady;
     const res=await adminAuth.signInWithPopup(provider);
     if(!isAdminUser(res.user)){ err.textContent='Bu hesabın admin icazəsi yoxdur.'; await adminAuth.signOut(); return; }
+    // Bu səkmədə saytın özündə də admin kimi tanınmaq üçün (səkmə bağlananda unudulur)
+    try{
+      if(!firebase.apps.some(a=>a.name==='[DEFAULT]')) firebase.initializeApp(FB_CONFIG);
+      await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+      if(res.credential) await firebase.auth().signInWithCredential(res.credential);
+    }catch(e){ console.error(e); }
     showAdmin();
   }catch(e){
     if(e && (e.code==='auth/popup-closed-by-user' || e.code==='auth/cancelled-popup-request')) return;
     err.textContent = e && e.code==='auth/unauthorized-domain' ? 'Bu domen Firebase-də icazəli deyil.' : 'Giriş alınmadı. Yenidən cəhd edin.';
   }
+});
+
+document.getElementById('adminLogout').addEventListener('click', async ()=>{
+  try{ await adminAuth.signOut(); }catch(e){}
+  try{ if(firebase.apps.some(a=>a.name==='[DEFAULT]')) await firebase.auth().signOut(); }catch(e){}
+  location.reload();
 });
 
 let regsLoaded=false;
