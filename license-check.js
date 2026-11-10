@@ -18,7 +18,6 @@
   var SDK = '10.13.1';
   var WA_NUMBER = '994552107111';
   var SESSION_KEY = 'anp_session_' + TOOL_ID;
-  var BYPASS_PHONES = ['+994502103468', '+994554157215'];
 
   function loadScript(src){ return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=rej; document.head.appendChild(s); }); }
   var fbReady=null;
@@ -31,7 +30,12 @@
       ]); })
       .then(function(){
         if(!firebase.apps.length) firebase.initializeApp(FB_CONFIG);
-        if(!firebase.auth().currentUser){ return firebase.auth().signInAnonymously().catch(function(){}); }
+        return new Promise(function(res){
+          var off=firebase.auth().onAuthStateChanged(function(u){
+            off();
+            if(u) res(); else firebase.auth().signInAnonymously().then(res, res);
+          });
+        });
       });
     return fbReady;
   }
@@ -59,6 +63,9 @@
         approved = !!(v && v.approved);
         if(typeof cb==='function') cb(approved, v);
         renderWidget();
+      }, function(){
+        activeWatchKey=null; approved=false; clearSession(); renderWidget();
+        if(typeof cb==='function') cb(false, null);
       });
     });
   }
@@ -66,7 +73,6 @@
   (function initSession(){
     var s=getSession();
     if(!s) return;
-    if(BYPASS_PHONES.indexOf(s.phone)>-1){ approved=true; return; }
     watchApproval(phoneKey(s.phone), function(ok){
       if(ok){
         var wait=document.getElementById('anpVerifyWait');
@@ -171,29 +177,32 @@
     var key=phoneKey(phone);
     ensureFirebase().then(function(){
       var dbRef=firebase.database().ref('registrations/'+TOOL_ID+'/'+key);
+      var uid=firebase.auth().currentUser && firebase.auth().currentUser.uid;
+      if(!uid){ throw new Error('Bağlantı qurulmadı, səhifəni yeniləyin.'); }
+      var device={pin:pin, ts:Date.now()};
       if(regMode){
         var name=document.getElementById('anpName').value.trim();
         var work=document.getElementById('anpWork').value.trim();
         if(!name||!work){ err.textContent='Ad Soyad və İş yeri mütləqdir.'; btn.disabled=false; btn.textContent='Hesab yarat'; return; }
-        dbRef.once('value').then(function(existing){
-          if(existing.exists()){ err.textContent='Bu nömrə ilə artıq qeydiyyat var. "Daxil ol" sekmesindən gir.'; btn.disabled=false; btn.textContent='Hesab yarat'; return; }
-          var isBypass = BYPASS_PHONES.indexOf(phone)>-1;
-          dbRef.set({ adSoyad:name, isYeri:work, phone:phone, pin:pin, ts:Date.now(), approved:isBypass, bypass:isBypass }).then(function(){
-            setSession({name:name, work:work, phone:phone});
-            if(isBypass){ approved=true; closeModal(); renderWidget(); if(typeof pendingCb==='function'){ var cb=pendingCb; pendingCb=null; cb(); } }
-            else { watchApproval(key, function(){}); showWait({name:name, phone:phone}); }
-            btn.disabled=false; btn.textContent='Hesab yarat';
-          });
+        var devices={}; devices[uid]=device;
+        return dbRef.set({ adSoyad:name, isYeri:work, phone:phone, pin:pin, ts:Date.now(), approved:false, devices:devices }).then(function(){
+          setSession({name:name, work:work, phone:phone});
+          watchApproval(key, function(){}); showWait({name:name, phone:phone});
+          btn.disabled=false; btn.textContent='Hesab yarat';
+        }, function(){
+          err.textContent='Bu nömrə ilə artıq qeydiyyat var. "Daxil ol" sekmesindən gir.'; btn.disabled=false; btn.textContent='Hesab yarat';
         });
       } else {
-        dbRef.once('value').then(function(snap){
-          if(!snap.exists()){ err.textContent='Bu nömrə ilə qeydiyyat tapılmadı. "Qeydiyyat" sekmesindən qeydiyyatdan keç.'; btn.disabled=false; btn.textContent='Daxil ol'; return; }
-          var v=snap.val();
-          if(String(v.pin)!==String(pin)){ err.textContent='PIN yanlışdır.'; btn.disabled=false; btn.textContent='Daxil ol'; return; }
-          setSession({name:v.adSoyad, work:v.isYeri, phone:phone});
-          if(v.approved){ approved=true; closeModal(); renderWidget(); if(typeof pendingCb==='function'){ var cb=pendingCb; pendingCb=null; cb(); } }
-          else { watchApproval(key, function(){}); showWait({name:v.adSoyad, phone:phone}); }
-          btn.disabled=false; btn.textContent='Daxil ol';
+        return dbRef.child('devices/'+uid).set(device).then(function(){
+          return dbRef.once('value').then(function(snap){
+            var v=snap.val()||{};
+            setSession({name:v.adSoyad, work:v.isYeri, phone:phone});
+            if(v.approved){ approved=true; closeModal(); renderWidget(); if(typeof pendingCb==='function'){ var cb=pendingCb; pendingCb=null; cb(); } }
+            else { watchApproval(key, function(){}); showWait({name:v.adSoyad, phone:phone}); }
+            btn.disabled=false; btn.textContent='Daxil ol';
+          });
+        }, function(){
+          err.textContent='Nömrə və ya PIN yanlışdır. Qeydiyyatınız yoxdursa, "Qeydiyyat" sekmesindən keçin.'; btn.disabled=false; btn.textContent='Daxil ol';
         });
       }
     }).catch(function(e){ err.textContent='Xəta baş verdi: '+(e.message||e.code||'naməlum'); btn.disabled=false; btn.textContent=regMode?'Hesab yarat':'Daxil ol'; });
