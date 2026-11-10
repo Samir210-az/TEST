@@ -37,10 +37,9 @@ h2{margin:0}
 
 <div id="pinScreen" class="pin-box">
   <h3 style="margin-bottom:4px">SuperAdmin girişi</h3>
-  <p style="font-size:.9rem;color:var(--ink-2)">Qeydiyyatdan keçənlərin siyahısını görmək üçün PIN daxil edin.</p>
-  <input id="pinInput" type="password" placeholder="PIN" autocomplete="off" autocapitalize="characters">
+  <p style="font-size:.9rem;color:var(--ink-2)">Qeydiyyatları görmək üçün admin Google hesabı ilə daxil olun.</p>
   <div class="pin-err" id="pinErr"></div>
-  <button class="btn btn-primary" onclick="checkPin()">Daxil ol</button>
+  <button class="btn btn-primary" id="googleLogin" type="button">Google ilə daxil ol</button>
 </div>
 
 <main id="adminMain" class="admin-wrap" style="display:none">
@@ -61,7 +60,6 @@ h2{margin:0}
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 <script>
-const ADMIN_PIN = "AL2026EA";
 const TOOL_ID = "TEST";
 const TOOL_TITLE = "Erkən İnkişaf Rotası";
 const FB_CONFIG = {
@@ -76,25 +74,36 @@ const FB_CONFIG = {
 document.getElementById('pageTitle').textContent = TOOL_TITLE + ' — Qeydiyyatlar';
 let allRegs = [];
 
-function checkPin(){
-  const v = document.getElementById('pinInput').value.trim();
-  if(v !== ADMIN_PIN){ document.getElementById('pinErr').textContent = 'Yanlış PIN.'; return; }
+const ADMIN_EMAIL = "samir.akhundoff@gmail.com";
+if(!firebase.apps.length) firebase.initializeApp(FB_CONFIG);
+function isAdminUser(u){ return !!(u && u.email===ADMIN_EMAIL && u.emailVerified); }
+function showAdmin(){
   document.getElementById('pinScreen').style.display='none';
   document.getElementById('adminMain').style.display='block';
   loadRegs();
 }
-document.getElementById('pinInput').addEventListener('keydown', e=>{ if(e.key==='Enter') checkPin(); });
-
-async function loadRegs(){
-  if(!firebase.apps.length) firebase.initializeApp(FB_CONFIG);
-  if(!firebase.auth().currentUser){
-    try{ await firebase.auth().signInAnonymously(); }catch(e){ console.error(e); }
+firebase.auth().onAuthStateChanged(u=>{ if(isAdminUser(u)) showAdmin(); });
+document.getElementById('googleLogin').addEventListener('click', async ()=>{
+  const err=document.getElementById('pinErr'); err.textContent='';
+  try{
+    const provider=new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({prompt:'select_account'});
+    const res=await firebase.auth().signInWithPopup(provider);
+    if(!isAdminUser(res.user)){ err.textContent='Bu hesabın admin icazəsi yoxdur.'; await firebase.auth().signOut(); }
+  }catch(e){
+    if(e && (e.code==='auth/popup-closed-by-user' || e.code==='auth/cancelled-popup-request')) return;
+    err.textContent = e && e.code==='auth/unauthorized-domain' ? 'Bu domen Firebase-də icazəli deyil.' : 'Giriş alınmadı. Yenidən cəhd edin.';
   }
+});
+
+let regsLoaded=false;
+function loadRegs(){
+  if(regsLoaded) return; regsLoaded=true;
   firebase.database().ref('registrations/'+TOOL_ID).on('value', snap=>{
     const val = snap.val() || {};
     allRegs = Object.entries(val).map(([key,r])=>Object.assign({_key:key}, r)).sort((a,b)=>(b.ts||0)-(a.ts||0));
     renderTable();
-  });
+  }, ()=>{ regsLoaded=false; document.getElementById('emptyNote').textContent='Siyahını oxumaq üçün icazə yoxdur.'; document.getElementById('emptyNote').style.display='block'; });
 }
 function renderTable(){
   const q = (document.getElementById('adminSearch').value||'').toLowerCase();
