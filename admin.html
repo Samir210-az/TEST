@@ -75,21 +75,26 @@ document.getElementById('pageTitle').textContent = TOOL_TITLE + ' — Qeydiyyatl
 let allRegs = [];
 
 const ADMIN_EMAIL = "samir.akhundoff@gmail.com";
-if(!firebase.apps.length) firebase.initializeApp(FB_CONFIG);
+// Admin girişi ayrıca və yaddaşsız saxlanır: səhifə bağlananda və ya yenilənəndə yenidən Google girişi tələb olunur.
+const adminApp = firebase.initializeApp(FB_CONFIG, 'admin');
+const adminAuth = adminApp.auth();
+const adminDb = adminApp.database();
+const persistReady = adminAuth.setPersistence(firebase.auth.Auth.Persistence.NONE);
 function isAdminUser(u){ return !!(u && u.email===ADMIN_EMAIL && u.emailVerified); }
 function showAdmin(){
   document.getElementById('pinScreen').style.display='none';
   document.getElementById('adminMain').style.display='block';
   loadRegs();
 }
-firebase.auth().onAuthStateChanged(u=>{ if(isAdminUser(u)) showAdmin(); });
 document.getElementById('googleLogin').addEventListener('click', async ()=>{
   const err=document.getElementById('pinErr'); err.textContent='';
   try{
     const provider=new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({prompt:'select_account'});
-    const res=await firebase.auth().signInWithPopup(provider);
-    if(!isAdminUser(res.user)){ err.textContent='Bu hesabın admin icazəsi yoxdur.'; await firebase.auth().signOut(); }
+    await persistReady;
+    const res=await adminAuth.signInWithPopup(provider);
+    if(!isAdminUser(res.user)){ err.textContent='Bu hesabın admin icazəsi yoxdur.'; await adminAuth.signOut(); return; }
+    showAdmin();
   }catch(e){
     if(e && (e.code==='auth/popup-closed-by-user' || e.code==='auth/cancelled-popup-request')) return;
     err.textContent = e && e.code==='auth/unauthorized-domain' ? 'Bu domen Firebase-də icazəli deyil.' : 'Giriş alınmadı. Yenidən cəhd edin.';
@@ -99,7 +104,7 @@ document.getElementById('googleLogin').addEventListener('click', async ()=>{
 let regsLoaded=false;
 function loadRegs(){
   if(regsLoaded) return; regsLoaded=true;
-  firebase.database().ref('registrations/'+TOOL_ID).on('value', snap=>{
+  adminDb.ref('registrations/'+TOOL_ID).on('value', snap=>{
     const val = snap.val() || {};
     allRegs = Object.entries(val).map(([key,r])=>Object.assign({_key:key}, r)).sort((a,b)=>(b.ts||0)-(a.ts||0));
     renderTable();
@@ -134,7 +139,7 @@ function renderTable(){
   }).join('');
 }
 function toggleApprove(key, val){
-  firebase.database().ref('registrations/'+TOOL_ID+'/'+key+'/approved').set(val);
+  adminDb.ref('registrations/'+TOOL_ID+'/'+key+'/approved').set(val);
 }
 function esc(s){ const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
 </script>
