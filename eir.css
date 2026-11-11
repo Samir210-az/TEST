@@ -6,7 +6,8 @@
 }
 
 body {
-    background: linear-gradient(160deg, #fff7ed 0%, #f8fafc 45%, #eef2ff 100%);
+    background: linear-gradient(170deg, #dbe6fb 0%, #e6e3fa 55%, #f3e1ee 100%);
+    background-attachment: fixed;
     padding: 16px 14px 90px;
     color: var(--eir-ink);
 }
@@ -391,3 +392,54 @@ button.pulse { animation: eirGlow 1.6s ease-in-out infinite; }
         transition: none !important;
     }
 }
+
+.card { background: #fff; }
+h1 { font-size: 2.6rem; line-height: 1.05; letter-spacing: -0.5px; }
+.logo3d { width: 64px; height: 64px; border-radius: 20px; }
+.badge-new { font-size: 0.78rem; }
+
+.eir-about {
+    background: linear-gradient(160deg, #fff7ed, #ffedd5);
+    border: 1px solid #fdba74;
+    border-radius: 20px;
+    padding: 16px 16px 14px;
+    margin-top: 14px;
+    color: #7c2d12;
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+.eir-about p { margin: 0 0 8px; }
+.eir-about-title { font-size: 1.15rem; margin: 0 0 8px; color: #9a3412; font-weight: 800; }
+.eir-about-sub { font-weight: 800; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.6px; color: #c2410c; margin: 12px 0 6px !important; }
+.eir-areas { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.eir-areas li { background: #fff; border: 1px solid #fed7aa; border-radius: 99px; padding: 4px 11px; font-size: 0.76rem; font-weight: 600; }
+.eir-steps { margin: 0; padding-left: 20px; }
+.eir-steps li { margin-bottom: 4px; }
+.eir-note { font-size: 0.76rem; color: #9a3412; opacity: 0.85; margin: 10px 0 0 !important; }
+
+.eir-install { margin-top: 12px; border: 1px solid #c7d2fe; background: #eef2ff; border-radius: 16px; }
+.eir-install summary { cursor: pointer; padding: 12px 14px; font-weight: 700; font-size: 0.88rem; color: #3730a3; list-style: none; }
+.eir-install summary::-webkit-details-marker { display: none; }
+.eir-install summary::after { content: '+'; float: right; font-size: 1.1rem; }
+.eir-install[open] summary::after { content: '\2212'; }
+.eir-install-body { padding: 0 14px 14px; font-size: 0.84rem; line-height: 1.5; color: #312e81; }
+.eir-install-body p { margin: 0 0 8px; }
+.eir-install-hint { font-size: 0.78rem; opacity: 0.85; }
+.eir-install-body button { margin-top: 4px; }
+
+.domain-area { background: #fff; border: 1px solid #c9d4ee; box-shadow: 0 12px 28px -14px rgba(49, 46, 129, 0.35); }
+.domain-body { background: #f4f7ff; padding: 8px 12px 12px; }
+.subskill-item {
+    background: #fff;
+    border: 1px solid #dbe4f7;
+    border-radius: 16px;
+    padding: 12px 12px 10px;
+    margin: 8px 0 0;
+    box-shadow: 0 4px 10px -8px rgba(49, 46, 129, 0.4);
+}
+.subskill-item:last-child { border-bottom: 1px solid #dbe4f7; }
+.subskill-item.answered { border-color: #86efac; background: #f7fffa; }
+.eir-bar { background: rgba(255, 255, 255, 0.94); }
+@media (max-width: 520px) { h1 { font-size: 2.1rem; } .logo3d { width: 56px; height: 56px; } }
+.subskill-item:hover { background: #fff; padding-left: 12px; border-radius: 16px; }
+.subskill-item.answered:hover { background: #f7fffa; }
