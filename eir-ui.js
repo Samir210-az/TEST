@@ -128,7 +128,7 @@
                 header.click();
             }
         });
-        header.addEventListener('click', function () {
+        header.addEventListener('click', function (e) {
             if (busy) return;
             if (isOpen(area)) {
                 busy = true;
@@ -136,6 +136,10 @@
                     if (other !== area && isOpen(other)) headerOf(other).click();
                 });
                 busy = false;
+                if (!e.isTrusted) return;
+                setTimeout(function () {
+                    area.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+                }, 60);
             }
         });
 
@@ -250,4 +254,24 @@
         attributeFilter: ['class']
     });
     sync();
+    (function () {
+        var box = document.getElementById('eirInstall');
+        var btn = document.getElementById('eirInstallBtn');
+        if (!box) return;
+        var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+        if (standalone) { box.hidden = true; return; }
+        var deferred = null;
+        window.addEventListener('beforeinstallprompt', function (e) {
+            e.preventDefault();
+            deferred = e;
+            btn.hidden = false;
+        });
+        btn.addEventListener('click', function () {
+            if (!deferred) return;
+            deferred.prompt();
+            deferred = null;
+            btn.hidden = true;
+        });
+        window.addEventListener('appinstalled', function () { box.hidden = true; });
+    })();
 })();
