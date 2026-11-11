@@ -83,11 +83,7 @@
 
   (function initSession(){
     var s=getSession();
-    if(!s){
-      var left=DATA_KEYS.some(function(k){ return localStorage.getItem(k)!==null; });
-      if(left){ stashData('admin'); location.reload(); }
-      return;
-    }
+    if(!s) return;
     watchApproval(phoneKey(s.phone), function(ok){
       if(ok){
         var wait=document.getElementById('anpVerifyWait');
@@ -277,7 +273,7 @@
     ensureFirebase().then(function(){
       var u=firebase.auth().currentUser;
       if(u && !u.isAnonymous && u.email===ADMIN_EMAIL && u.emailVerified){
-        if(restoreData('admin')){ location.reload(); return; }
+        if(!DATA_KEYS.some(function(k){ return localStorage.getItem(k)!==null; }) && restoreData('admin')){ location.reload(); return; }
         adminMode=true; approved=true; closeModal(); renderWidget();
         if(typeof pendingCb==='function'){ var cb=pendingCb; pendingCb=null; cb(); }
       }
