@@ -83,7 +83,11 @@
 
   (function initSession(){
     var s=getSession();
-    if(!s) return;
+    if(!s){
+      var left=DATA_KEYS.some(function(k){ return localStorage.getItem(k)!==null; });
+      if(left){ stashData('admin'); location.reload(); }
+      return;
+    }
     watchApproval(phoneKey(s.phone), function(ok){
       if(ok){
         var wait=document.getElementById('anpVerifyWait');
