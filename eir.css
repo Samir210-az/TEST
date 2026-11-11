@@ -520,3 +520,20 @@ html[data-theme="dark"] .social-link { background: #1a2040; color: #e5e9f5; bord
 html[data-theme="dark"] .social-link i { color: #f472b6; }
 html[data-theme="dark"] .test-list { border-radius: 16px; }
 html[data-theme="dark"] .test-item, html[data-theme="dark"] .test-item:hover { border-radius: 14px; }
+
+.eir-restart {
+    flex: none;
+    margin-left: 10px;
+    padding: 7px 12px;
+    border-radius: 11px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: #fff1e6;
+    color: #c2410c;
+    border: 1px solid #fdba74;
+    box-shadow: none;
+}
+.eir-restart[hidden] { display: none; }
+html[data-theme="dark"] .eir-restart { background: #2a1d17; color: #fdba74; border-color: #5b3a22; }
+.eir-bar-top b { white-space: nowrap; margin-left: 8px; }
+.eir-bar-top .eir-bar-main span { font-size: 0.74rem; line-height: 1.25; }
