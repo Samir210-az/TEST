@@ -23,9 +23,29 @@
     var container = document.querySelector('.container');
     var bar = document.createElement('div');
     bar.className = 'eir-bar no-print';
-    bar.innerHTML = '<div class="eir-bar-top"><span id="eirBarText">Doldurulub</span><b id="eirBarCount">0 / 0</b></div>' +
+    bar.innerHTML = '<div class="eir-bar-top"><div class="eir-bar-main"><span id="eirBarText">Doldurulub</span><b id="eirBarCount">0 / 0</b></div>' +
+        '<button type="button" class="eir-theme" id="eirTheme"></button></div>' +
         '<div class="eir-track"><i id="eirBarFill"></i></div>';
     container.insertBefore(bar, container.firstChild);
+
+    (function () {
+        var root = document.documentElement;
+        var btn = document.getElementById('eirTheme');
+        var meta = document.querySelector('meta[name="theme-color"]');
+        function paint() {
+            var dark = root.getAttribute('data-theme') === 'dark';
+            btn.textContent = dark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+            btn.setAttribute('aria-label', dark ? 'Gündüz rejiminə keç' : 'Gecə rejiminə keç');
+            if (meta) meta.setAttribute('content', dark ? '#0b1020' : '#ea580c');
+        }
+        btn.addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem('eir_theme', next); } catch (e) {}
+            paint();
+        });
+        paint();
+    })();
 
     var legend = document.createElement('div');
     legend.className = 'eir-legend no-print';
