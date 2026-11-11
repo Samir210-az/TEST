@@ -24,9 +24,14 @@
     var bar = document.createElement('div');
     bar.className = 'eir-bar no-print';
     bar.innerHTML = '<div class="eir-bar-top"><div class="eir-bar-main"><span id="eirBarText">Doldurulub</span><b id="eirBarCount">0 / 0</b></div>' +
+        '<button type="button" class="eir-restart" id="eirRestart" hidden>Yenidən başla</button>' +
         '<button type="button" class="eir-theme" id="eirTheme"></button></div>' +
         '<div class="eir-track"><i id="eirBarFill"></i></div>';
     container.insertBefore(bar, container.firstChild);
+
+    document.getElementById('eirRestart').addEventListener('click', function () {
+        document.getElementById('resetBtn').click();
+    });
 
     (function () {
         var root = document.documentElement;
@@ -210,6 +215,7 @@
         var countEl = document.getElementById('eirBarCount');
         var text = done + ' / ' + total;
         if (countEl.textContent !== text) countEl.textContent = text;
+        document.getElementById('eirRestart').hidden = done === 0;
         document.getElementById('eirBarFill').style.width = pct + '%';
         var all = total > 0 && done === total;
         bar.classList.toggle('complete', all);
