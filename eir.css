@@ -537,3 +537,26 @@ html[data-theme="dark"] .test-item, html[data-theme="dark"] .test-item:hover { b
 html[data-theme="dark"] .eir-restart { background: #2a1d17; color: #fdba74; border-color: #5b3a22; }
 .eir-bar-top b { white-space: nowrap; margin-left: 8px; }
 .eir-bar-top .eir-bar-main span { font-size: 0.74rem; line-height: 1.25; }
+
+html[data-theme="dark"] .anp-overlay { background: rgba(4, 7, 18, 0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+html[data-theme="dark"] .anp-modal { background: #171c33; color: #e5e9f5; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px #2c3560; }
+html[data-theme="dark"] .anp-modal h3 { color: #fdba74; }
+html[data-theme="dark"] .anp-modal .anp-muted { color: #aab6dc; }
+html[data-theme="dark"] .anp-modal label { color: #fdba74; }
+html[data-theme="dark"] .anp-modal input { background: #0f1430; color: #f1f5ff; border: 1px solid #3a4373; }
+html[data-theme="dark"] .anp-modal input:focus { border-color: #fb923c; }
+html[data-theme="dark"] .anp-tabs { background: #0f1430; }
+html[data-theme="dark"] .anp-tab { color: #9aa7cc; }
+html[data-theme="dark"] .anp-tab.active { background: #ea580c; color: #fff; }
+html[data-theme="dark"] .anp-btn { background: #ea580c; color: #fff; }
+html[data-theme="dark"] .anp-close { background: #262d4d; color: #e5e9f5; }
+html[data-theme="dark"] .anp-err { color: #fca5a5; }
+html[data-theme="dark"] .anp-acc-chip { background: #171c33; border-color: #2c3560; color: #e5e9f5; }
+html[data-theme="dark"] .anp-acc-logout { background: #262d4d; color: #fdba74; }
+html[data-theme="dark"] .anp-acc-btn { background: #9a3412; }
+html[data-theme="dark"] .anp-acc-btn.pending { background: #b91c1c; }
+.anp-modal input { color: #2a1c1c; background: #fff; }
+.anp-modal label { color: #555; }
+.anp-modal .anp-close { padding: 0; width: 32px; height: 32px; min-width: 0; display: grid; place-items: center; line-height: 1; box-shadow: none; color: #6a0000; }
+.anp-overlay { background: rgba(20, 20, 20, 0.78); }
+html[data-theme="dark"] .anp-modal .anp-close { color: #e5e9f5; }
