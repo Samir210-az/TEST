@@ -50,6 +50,16 @@
   function getSession(){ try{ return JSON.parse(localStorage.getItem(SESSION_KEY))||null; }catch(e){ return null; } }
   function setSession(s){ localStorage.setItem(SESSION_KEY, JSON.stringify(s)); }
   function clearSession(){ localStorage.removeItem(SESSION_KEY); }
+  var DATA_KEYS=['rehab_test_data','rehab_test_archive'];
+  function ownerKey(){ var s=getSession(); return s&&s.phone ? phoneKey(s.phone) : 'admin'; }
+  function stashData(owner){
+    try{ DATA_KEYS.forEach(function(k){ var v=localStorage.getItem(k); if(v!==null){ localStorage.setItem(k+'::'+owner, v); localStorage.removeItem(k); } }); }catch(e){}
+  }
+  function restoreData(owner){
+    var changed=false;
+    try{ DATA_KEYS.forEach(function(k){ var v=localStorage.getItem(k+'::'+owner); if(v!==null){ localStorage.setItem(k, v); localStorage.removeItem(k+'::'+owner); changed=true; } }); }catch(e){}
+    return changed;
+  }
 
   var approved=false, adminMode=false;
   var ADMIN_EMAIL='samir.akhundoff@gmail.com';
@@ -65,7 +75,7 @@
         if(typeof cb==='function') cb(approved, v);
         renderWidget();
       }, function(){
-        activeWatchKey=null; approved=false; clearSession(); renderWidget();
+        activeWatchKey=null; approved=false; stashData(ownerKey()); clearSession(); renderWidget();
         if(typeof cb==='function') cb(false, null);
       });
     });
@@ -198,6 +208,7 @@
           return dbRef.once('value').then(function(snap){
             var v=snap.val()||{};
             setSession({name:v.adSoyad, work:v.isYeri, phone:phone});
+            if(v.approved && restoreData(key)){ location.reload(); return; }
             if(v.approved){ approved=true; closeModal(); renderWidget(); if(typeof pendingCb==='function'){ var cb=pendingCb; pendingCb=null; cb(); } }
             else { watchApproval(key, function(){}); showWait({name:v.adSoyad, phone:phone}); }
             btn.disabled=false; btn.textContent='Daxil ol';
@@ -216,9 +227,12 @@
       });
       activeWatchKey=null;
     }
+    var owner=ownerKey();
+    stashData(owner);
     clearSession();
     approved=false;
     renderWidget();
+    location.reload();
   }
 
   function buildWidget(){
@@ -259,6 +273,7 @@
     ensureFirebase().then(function(){
       var u=firebase.auth().currentUser;
       if(u && !u.isAnonymous && u.email===ADMIN_EMAIL && u.emailVerified){
+        if(restoreData('admin')){ location.reload(); return; }
         adminMode=true; approved=true; closeModal(); renderWidget();
         if(typeof pendingCb==='function'){ var cb=pendingCb; pendingCb=null; cb(); }
       }
